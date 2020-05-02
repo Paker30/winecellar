@@ -4,6 +4,9 @@
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "implicit-arrow-linebreak": "off",
-        "react/prop-types": [0]
+        "react/prop-types": [0],
+        "indent": ["error", 4],
+        "react/jsx-indent": ["error", 4],
+        "comma-dangle": ["error", "only-multiline"]
     }
 }

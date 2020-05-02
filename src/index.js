@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 const title = 'React with Webpack and Babel';
- 
+
 ReactDOM.render(
-  <App title={title} />,
-  document.getElementById('app')
+    <App title={title} />,
+    document.getElementById('app'), //  eslint-disable-line no-undef
 );
 
 module.hot.accept();
