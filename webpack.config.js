@@ -10,9 +10,36 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                loader: 'babel-loader',
                 exclude: /node_modules/,
-                use: ['babel-loader', 'eslint-loader']
+                test: /\.(js|jsx)$/,
+                options: {
+                    plugins: [
+                        ['import', { libraryName: 'antd', style: 'css' }]
+                    ]
+                },
+            },
+            {
+                loader: 'eslint-loader',
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true
+                        }
+                    }
+                ]
             }
         ]
     },
