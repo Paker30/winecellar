@@ -5,6 +5,7 @@ import Uniqid from 'uniqid';
 import Title from './components/title';
 import Cellar from './components/cellar';
 import Bottle from './components/bottle';
+import OtherBottle from './components/new';
 
 const { Content, Footer } = Layout;
 const pickBottle = (bottles) => (bottleId) => bottles.find(({ id }) => id === bottleId);
@@ -55,6 +56,12 @@ export default class App extends Component {
                 }
             ]
         };
+        this.addBottle = this.addBottle.bind(this);
+    }
+
+    addBottle(bottle) {
+        const { bottles } = this.state;
+        this.setState({ bottles: [...bottles, { id: Uniqid('bottle-'), key: bottles.length.toString(), ...bottle }] });
     }
 
     render() {
@@ -71,6 +78,9 @@ export default class App extends Component {
                                 </Route>
                                 <Route path="/bottle">
                                     <Bottle find={pickBottle(bottles)} />
+                                </Route>
+                                <Route path="/add">
+                                    <OtherBottle add={this.addBottle} />
                                 </Route>
                             </Switch>
                         </div>
