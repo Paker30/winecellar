@@ -10,6 +10,8 @@
         "comma-dangle": ["error", "only-multiline"],
         "react/prefer-stateless-function": "off",
         "object-curly-newline": ["error", { "multiline": true }],
-        "max-len": "off"
+        "max-len": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-indent-props": "off"
     }
 }
