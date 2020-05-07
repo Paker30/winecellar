@@ -1,6 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Card } from 'antd';
+import { Card, Descriptions } from 'antd';
+
+const { Meta } = Card;
 
 function Bottle({ find }) {
     const query = new URLSearchParams(useLocation().search);
@@ -8,10 +10,16 @@ function Bottle({ find }) {
 
     return (
         <div className="site-card-border-less-wrapper">
-            <Card title={name} bordered={false} style={{ width: 300 }}>
-                <p>{color}</p>
-                <p>{type}</p>
-                <p>{year}</p>
+            <Card style={{ width: 300 }}>
+                <Meta
+                    title={name}
+                    description={year}
+                />
+                <br />
+                <Descriptions title="Details">
+                    <Descriptions.Item label="color">{color}</Descriptions.Item>
+                    <Descriptions.Item label="type">{type}</Descriptions.Item>
+                </Descriptions>
             </Card>
         </div>
     );

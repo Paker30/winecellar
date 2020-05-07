@@ -2,13 +2,41 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import Uniqid from 'uniqid';
+import Styled from 'styled-components';
 import Title from './components/title';
 import Cellar from './components/cellar';
 import Bottle from './components/bottle';
 import OtherBottle from './components/new';
 
-const { Content, Footer } = Layout;
+const { Footer } = Layout;
 const pickBottle = (bottles) => (bottleId) => bottles.find(({ id }) => id === bottleId);
+const Container = Styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 15px 10px;
+    grid-template-areas: 
+        "header header header header"
+        "main main main detail"
+        "footer footer footer footer";
+`;
+const HeaderArea = Styled.div`
+    grid-area: header;
+`;
+const FooterArea = Styled.div`
+    grid-area: footer;
+`;
+const MainArea = Styled.div`
+    grid-area: main;
+    justify-items: center;
+    grid-column-start: 1;
+    grid-column-end: 5;
+`;
+const DetailArea = Styled.div`
+    grid-area: detail;
+    grid-column-start: 4;
+    grid-column-end: 5;
+`;
 
 export default class App extends Component {
     constructor(props) {
@@ -68,25 +96,31 @@ export default class App extends Component {
         const { columns, bottles } = this.state;
         return (
             <Router>
-                <Layout className="layout">
-                    <Title title="Mi Bodega" />
-                    <Content>
-                        <div>
-                            <Switch>
-                                <Route exact path="/">
-                                    <Cellar columns={columns} bottles={bottles} />
-                                </Route>
-                                <Route path="/bottle">
-                                    <Bottle find={pickBottle(bottles)} />
-                                </Route>
-                                <Route path="/add">
-                                    <OtherBottle add={this.addBottle} />
-                                </Route>
-                            </Switch>
-                        </div>
-                    </Content>
-                    <Footer style={{ textAlign: 'center' }}>Created by Paker30</Footer>
-                </Layout>
+                <Container>
+                    <HeaderArea>
+                        <Title title="Mi Bodega" />
+                    </HeaderArea>
+                    <MainArea>
+                        <Switch>
+                            <Route exact path="/">
+                                <Cellar columns={columns} bottles={bottles} />
+                            </Route>
+                        </Switch>
+                    </MainArea>
+                    <DetailArea>
+                        <Switch>
+                            <Route path="/bottle">
+                                <Bottle find={pickBottle(bottles)} />
+                            </Route>
+                            <Route path="/add">
+                                <OtherBottle add={this.addBottle} />
+                            </Route>
+                        </Switch>
+                    </DetailArea>
+                    <FooterArea>
+                        <Footer style={{ textAlign: 'center' }}>Created by Paker30</Footer>
+                    </FooterArea>
+                </Container>
             </Router>
         );
     }
