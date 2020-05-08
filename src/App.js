@@ -105,7 +105,7 @@ export default class App extends Component {
             <Router>
                 <Container>
                     <HeaderArea>
-                        <Title title="Mi Bodega" />
+                        <Title title="Mi Bodega" items={[<Link to="/">Cellar</Link>, <Link to="add">Add</Link>]} />
                     </HeaderArea>
                     <MainArea>
                         <Switch>
