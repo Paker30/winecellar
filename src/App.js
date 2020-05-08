@@ -13,8 +13,9 @@ const pickBottle = (bottles) => (bottleId) => bottles.find(({ id }) => id === bo
 const Container = Styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: auto 1fr;
     gap: 15px 10px;
+    height: 100%;
     grid-template-areas: 
         "header header header header"
         "main main main detail"
@@ -25,6 +26,8 @@ const HeaderArea = Styled.div`
 `;
 const FooterArea = Styled.div`
     grid-area: footer;
+    align-self: end;
+    
 `;
 const MainArea = Styled.div`
     grid-area: main;
