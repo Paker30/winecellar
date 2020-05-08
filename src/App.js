@@ -31,11 +31,15 @@ const MainArea = Styled.div`
     justify-items: center;
     grid-column-start: 1;
     grid-column-end: 5;
+    margin-left: 10px;
+    margin-right: 10px;
 `;
 const DetailArea = Styled.div`
     grid-area: detail;
     grid-column-start: 4;
     grid-column-end: 5;
+    margin-left: 10px;
+    margin-right: 10px;
 `;
 
 export default class App extends Component {
@@ -118,7 +122,9 @@ export default class App extends Component {
                         </Switch>
                     </DetailArea>
                     <FooterArea>
-                        <Footer style={{ textAlign: 'center' }}>Created by Paker30</Footer>
+                        <Footer style={{ textAlign: 'center' }}>
+                            Created by Paker30
+                        </Footer>
                     </FooterArea>
                 </Container>
             </Router>
