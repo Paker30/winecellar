@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import Uniqid from 'uniqid';
 import Styled from 'styled-components';
@@ -105,21 +105,24 @@ export default class App extends Component {
             <Router>
                 <Container>
                     <HeaderArea>
-                        <Title title="Mi Bodega" items={[<Link to="/">Cellar</Link>, <Link to="add">Add</Link>]} />
+                        <Title title="Mi Bodega" items={[<Link to="/cellar">Cellar</Link>, <Link to="/cellar/add">Add</Link>]} />
                     </HeaderArea>
                     <MainArea>
                         <Switch>
                             <Route exact path="/">
+                                <Redirect to="/cellar" />
+                            </Route>
+                            <Route path="/cellar">
                                 <Cellar columns={columns} bottles={bottles} />
                             </Route>
                         </Switch>
                     </MainArea>
                     <DetailArea>
                         <Switch>
-                            <Route path="/bottle">
+                            <Route path="/cellar/bottle">
                                 <Bottle find={pickBottle(bottles)} />
                             </Route>
-                            <Route path="/add">
+                            <Route path="/cellar/add">
                                 <OtherBottle add={this.addBottle} />
                             </Route>
                         </Switch>

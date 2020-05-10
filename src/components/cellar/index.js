@@ -12,7 +12,7 @@ export default class Cellar extends Component {
                 renderItem={(bottle) => (
                     <List.Item>
                         <List.Item.Meta
-                            title={<Link to={`/bottle?id=${bottle.id}`}>{bottle.name}</Link>}
+                            title={<Link to={`/cellar/bottle?id=${bottle.id}`}>{bottle.name}</Link>}
                             description={bottle.year}
                         />
                     </List.Item>
