@@ -8,6 +8,7 @@ import Title from './components/title';
 import Cellar from './components/cellar';
 import Bottle from './components/bottle';
 import OtherBottle from './components/new';
+import { version } from '../package.json';
 
 const { Footer } = Layout;
 const pickBottle = (bottles) => (bottleId) => bottles.find(({ id }) => id === bottleId);
@@ -140,7 +141,7 @@ export default class App extends Component {
                     </DetailArea>
                     <FooterArea>
                         <Footer style={{ textAlign: 'center' }}>
-                            Created by Paker30
+                            {`Created by Paker30 version ${version}`}
                         </Footer>
                     </FooterArea>
                 </Container>
