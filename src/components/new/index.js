@@ -5,10 +5,6 @@ import Styled from 'styled-components';
 
 const { Option } = Select;
 
-const layout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 }
-};
 const tailLayout = {
     wrapperCol: {
         offset: 8,
@@ -35,7 +31,6 @@ function OtherBottle({ add, history, adjustMainAreaWide }) {
     return (
         <NewBottle>
             <Form
-                {...layout}
                 name="basic"
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
