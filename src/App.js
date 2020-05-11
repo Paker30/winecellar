@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import Uniqid from 'uniqid';
+import PouchDB from 'pouchdb-browser';
 import Styled from 'styled-components';
 import Title from './components/title';
 import Cellar from './components/cellar';
@@ -72,33 +73,33 @@ export default class App extends Component {
                     key: 'year'
                 },
             ],
-            bottles: [
-                {
-                    key: '1',
-                    id: Uniqid('bottle-'),
-                    name: 'prado marina',
-                    color: 'red',
-                    type: 'wine',
-                    year: 2018
-                },
-                {
-                    key: '2',
-                    id: Uniqid('bottle-'),
-                    name: 'figueroa',
-                    color: 'red',
-                    type: 'wine',
-                    year: 2018
-                }
-            ],
-            mainAreaWide: '5'
+            bottles: [],
+            mainAreaWide: '5',
+            db: new PouchDB('cellar_db')
         };
         this.addBottle = this.addBottle.bind(this);
         this.adjustMainAreaWide = this.adjustMainAreaWide.bind(this);
     }
 
+    componentDidMount() {
+        const { db } = this.state;
+        db.allDocs({ include_docs: true, descending: true })
+            .then(({ rows }) => {
+                this.setState({ bottles: rows.map(({ doc }) => doc) });
+            })
+            .catch((error) => {
+                console.error('Something went wrong fetching the bottles', error);
+                this.setState({ bottles: [] });
+            });
+    }
+
     addBottle(bottle) {
-        const { bottles } = this.state;
-        this.setState({ bottles: [...bottles, { id: Uniqid('bottle-'), key: bottles.length.toString(), ...bottle }] });
+        const { bottles, db } = this.state;
+        const bottleId = Uniqid('bottle-');
+        const id = Uniqid();
+        db.put({ _id: id, id: bottleId, ...bottle })
+            .then(() => this.setState({ bottles: [...bottles, { id: bottleId, _id: id, ...bottle }] }))
+            .catch((error) => console.log('Something went wrong adding the bottle', error));
     }
 
     adjustMainAreaWide(columnEnd = '5') {

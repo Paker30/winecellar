@@ -50,6 +50,7 @@
   "dependencies": {
     "antd": "^4.2.0",
     "aphrodite": "^2.4.0",
+    "pouchdb-browser": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
