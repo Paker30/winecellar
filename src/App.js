@@ -29,11 +29,11 @@ const FooterArea = Styled.div`
     align-self: end;
     
 `;
-const MainArea = Styled.div`
+const MainArea = Styled.div.attrs(({ columnEnd }) => ({ columnEnd: columnEnd || '5' }))`
     grid-area: main;
     justify-items: center;
     grid-column-start: 1;
-    grid-column-end: 5;
+    grid-column-end: ${(props) => props.columnEnd};
     margin-left: 10px;
     margin-right: 10px;
 `;
@@ -89,9 +89,11 @@ export default class App extends Component {
                     type: 'wine',
                     year: 2018
                 }
-            ]
+            ],
+            mainAreaWide: '5'
         };
         this.addBottle = this.addBottle.bind(this);
+        this.adjustMainAreaWide = this.adjustMainAreaWide.bind(this);
     }
 
     addBottle(bottle) {
@@ -99,21 +101,29 @@ export default class App extends Component {
         this.setState({ bottles: [...bottles, { id: Uniqid('bottle-'), key: bottles.length.toString(), ...bottle }] });
     }
 
+    adjustMainAreaWide(columnEnd = '5') {
+        this.setState({ mainAreaWide: columnEnd });
+    }
+
     render() {
-        const { columns, bottles } = this.state;
+        const { columns, bottles, mainAreaWide } = this.state;
         return (
             <Router>
                 <Container>
                     <HeaderArea>
-                        <Title title="Mi Bodega" items={[<Link to="/cellar">Cellar</Link>, <Link to="/cellar/add">Add</Link>]} />
+                        <Title
+                            title="Mi Bodega"
+                            adjustMainAreaWide={this.adjustMainAreaWide}
+                            items={[{ link: <Link to="/cellar">Cellar</Link>, mainAreaWide: '5' }, { link: <Link to="/cellar/add">Add</Link>, mainAreaWide: '4' }]}
+                        />
                     </HeaderArea>
-                    <MainArea>
+                    <MainArea columnEnd={mainAreaWide}>
                         <Switch>
                             <Route exact path="/">
                                 <Redirect to="/cellar" />
                             </Route>
                             <Route path="/cellar">
-                                <Cellar columns={columns} bottles={bottles} />
+                                <Cellar columns={columns} bottles={bottles} adjustMainAreaWide={this.adjustMainAreaWide} />
                             </Route>
                         </Switch>
                     </MainArea>
@@ -123,7 +133,7 @@ export default class App extends Component {
                                 <Bottle find={pickBottle(bottles)} />
                             </Route>
                             <Route path="/cellar/add">
-                                <OtherBottle add={this.addBottle} />
+                                <OtherBottle add={this.addBottle} adjustMainAreaWide={this.adjustMainAreaWide} />
                             </Route>
                         </Switch>
                     </DetailArea>

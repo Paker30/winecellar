@@ -21,13 +21,14 @@ const NewBottle = Styled.div`
     padding: 24px;
 `;
 
-function OtherBottle({ add, history }) {
+function OtherBottle({ add, history, adjustMainAreaWide }) {
     const onFinishFailed = (errorInfo) => {
         console.error('Failed:', errorInfo);
     };
 
     const onFinish = (form) => {
         add(form);
+        adjustMainAreaWide('5');
         history.push('/');
     };
 
