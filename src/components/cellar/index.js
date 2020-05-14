@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { List } from 'antd';
-import { Link } from 'react-router-dom';
 
 export default class Cellar extends Component {
     render() {
-        const { bottles, adjustMainAreaWide, to } = this.props;
+        const { bottles, adjustMainAreaWide } = this.props;
         return (
             <List
                 itemLayout="horizontal"
@@ -12,7 +11,7 @@ export default class Cellar extends Component {
                 renderItem={(bottle) => (
                     <List.Item>
                         <List.Item.Meta
-                            title={<Link to={`${to}${bottle.id}`}>{bottle.name}</Link>}
+                            title={bottle.title}
                             description={bottle.year}
                             onClick={() => adjustMainAreaWide('4')}
                         />
