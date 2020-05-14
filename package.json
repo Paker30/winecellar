@@ -8,6 +8,7 @@
     "build": "NODE_ENV=production webpack --mode=production",
     "cm": "npx git-cz",
     "dev-server": "NODE_ENV=development webpack-dev-server",
+    "release": "standard-version",
     "test": "jest --coverage --colors"
   },
   "repository": {

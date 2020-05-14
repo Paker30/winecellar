@@ -21,6 +21,8 @@ jobs:
         node-version: '12.x'
     - run: npm install
     - run: npm run build
+    - run: npm run test
+    - run: npm run release
     - name: Deploy into S3
       uses: opspresso/action-s3-sync@master
       env:
