@@ -125,7 +125,7 @@ export default class App extends Component {
                                 <Redirect to="/cellar" />
                             </Route>
                             <Route path="/cellar">
-                                <Cellar columns={columns} bottles={bottles} adjustMainAreaWide={this.adjustMainAreaWide} />
+                                <Cellar columns={columns} bottles={bottles} adjustMainAreaWide={this.adjustMainAreaWide} to="/cellar/bottle?id=" />
                             </Route>
                         </Switch>
                     </MainArea>
