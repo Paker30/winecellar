@@ -80,6 +80,7 @@ export default class App extends Component {
         };
         this.addBottle = this.addBottle.bind(this);
         this.adjustMainAreaWide = this.adjustMainAreaWide.bind(this);
+        this.deleteBootle = this.deleteBootle.bind(this);
     }
 
     componentDidMount() {
@@ -99,8 +100,18 @@ export default class App extends Component {
         const bottleId = Uniqid('bottle-');
         const id = Uniqid();
         db.put({ _id: id, id: bottleId, ...bottle })
-            .then(() => this.setState({ bottles: [...bottles, { id: bottleId, _id: id, ...bottle }] }))
+            .then(({ rev }) => {
+                this.setState({ bottles: [...bottles, { id: bottleId, _id: id, ...bottle, _rev: rev }] });
+            })
             .catch((error) => console.log('Something went wrong adding the bottle', error));
+    }
+
+    deleteBootle(bottle) {
+        const { bottles, db } = this.state;
+        const bottleRemove = bottles.find(({ id }) => id === bottle.id);
+        db.remove(bottleRemove)
+            .then(() => this.setState({ bottles: [...bottles.filter(({ id }) => id !== bottle.id)] }))
+            .catch((error) => console.log('Something went wrong removing the bottle', error));
     }
 
     adjustMainAreaWide(columnEnd = '5') {
@@ -127,8 +138,9 @@ export default class App extends Component {
                             <Route path="/cellar">
                                 <Cellar
                                     columns={columns}
-                                    bottles={bottles.map((bottle) => ({ ...bottle, title: <Link to={`/cellar/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
+                                    bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/cellar/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
                                     adjustMainAreaWide={this.adjustMainAreaWide}
+                                    deleteBootle={this.deleteBootle}
                                 />
                             </Route>
                         </Switch>

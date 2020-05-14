@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { List } from 'antd';
+import { List, Button } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 export default class Cellar extends Component {
     render() {
-        const { bottles, adjustMainAreaWide } = this.props;
+        const { bottles, adjustMainAreaWide, deleteBootle } = this.props;
         return (
             <List
                 itemLayout="horizontal"
                 dataSource={bottles}
-                renderItem={(bottle) => (
-                    <List.Item>
+                renderItem={({ bottle, title }) => (
+                    <List.Item
+                        actions={[<Button icon={<DeleteOutlined />} onClick={() => deleteBootle(bottle)} />]}
+                    >
                         <List.Item.Meta
-                            title={bottle.title}
+                            title={title}
                             description={bottle.year}
                             onClick={() => adjustMainAreaWide('4')}
                         />
