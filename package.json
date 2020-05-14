@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Remember all the wine I have drink this quarantine",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "build-dev": "NODE_ENV=development webpack --mode=development",
     "build": "NODE_ENV=production webpack --mode=production",
