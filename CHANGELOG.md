@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.1.0 (2020-05-14)
+
+
+### Features
+
+* **delete:** delete bottles from the list ([25c8974](https://github.com/Paker30/winecellar/commit/25c897421533f0e5a0f45a9fd28b146a61d19ec3))
+
 ### 1.0.2 (2020-05-14)
 
 ### 1.0.1 (2020-05-14)
