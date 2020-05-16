@@ -70,9 +70,9 @@ function OtherBottle({ add, history, adjustMainAreaWide }) {
                     ]}
                 >
                     <Select style={{ width: 120 }}>
-                        <Option value="red">Red</Option>
-                        <Option value="white">White</Option>
-                        <Option value="pink">Pink</Option>
+                        <Option value="Red">Red</Option>
+                        <Option value="White">White</Option>
+                        <Option value="Pink">Pink</Option>
                     </Select>
                 </Form.Item>
                 <Form.Item
@@ -86,9 +86,9 @@ function OtherBottle({ add, history, adjustMainAreaWide }) {
                     ]}
                 >
                     <Select style={{ width: 120 }}>
-                        <Option value="wine">Wine</Option>
-                        <Option value="vermout">Vermout</Option>
-                        <Option value="champagne">Champagne</Option>
+                        <Option value="Wine">Wine</Option>
+                        <Option value="Vermout">Vermout</Option>
+                        <Option value="Champagne">Champagne</Option>
                     </Select>
                 </Form.Item>
                 <Form.Item
