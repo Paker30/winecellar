@@ -10,7 +10,7 @@ function Bottle({ find }) {
 
     return (
         <div className="site-card-border-less-wrapper">
-            <Card style={{ width: 300 }}>
+            <Card>
                 <Meta
                     title={name}
                     description={`${color} ${type} from ${year}`}
