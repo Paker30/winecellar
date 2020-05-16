@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
-import { Layout } from 'antd';
+import { Layout, Space } from 'antd';
 import Uniqid from 'uniqid';
 import PouchDB from 'pouchdb-browser';
 import Styled from 'styled-components';
@@ -124,11 +124,29 @@ export default class App extends Component {
             <Router>
                 <Container>
                     <HeaderArea>
-                        <Title
-                            title="Mi Bodega"
-                            adjustMainAreaWide={this.adjustMainAreaWide}
-                            items={[{ link: <Link to="/cellar">Cellar</Link>, mainAreaWide: '5' }, { link: <Link to="/cellar/add">Add</Link>, mainAreaWide: '3' }]}
-                        />
+                        <Title />
+                        <Space style={{
+                            marginTop: '52px',
+                            marginLeft: '26px',
+                            marginRight: '10px',
+                            width: '100%',
+                            borderBottom: '1px solid #E1BBCA'
+                        }}
+                        >
+                            <Link
+                                style={{
+                                    'font-family': 'aliens and cows',
+                                    'font-style': 'normal',
+                                    'font-weight': 'normal',
+                                    'font-size': '33px',
+                                    'line-height': '27px',
+                                    color: '#880C2D',
+                                }}
+                                to="/cellar"
+                            >
+                                Cellar
+                            </Link>
+                        </Space>
                     </HeaderArea>
                     <MainArea columnEnd={mainAreaWide}>
                         <Switch>
