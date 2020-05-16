@@ -113,7 +113,7 @@ function OtherBottle({ add, history, adjustMainAreaWide }) {
                         },
                     ]}
                 >
-                    <Rate allowHalf defaultValue={2.5} />
+                    <Rate allowHalf />
                 </Form.Item>
                 <Form.Item
                     label="price"
