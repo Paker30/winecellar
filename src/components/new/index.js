@@ -1,8 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, Rate, DatePicker, InputNumber } from 'antd';
 import Styled from 'styled-components';
 
+const { YearPicker } = DatePicker;
 const { Option } = Select;
 
 const tailLayout = {
@@ -17,13 +18,18 @@ const NewBottle = Styled.div`
     padding: 24px;
 `;
 
+const cleanObject = (obj) => JSON.parse(JSON.stringify(obj));
+const B = (f) => (g) => (x) => f(g(x));
+const capitalized = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+const toCapitalized = (str) => str.split(' ').map(capitalized).join(' ');
+
 function OtherBottle({ add, history, adjustMainAreaWide }) {
     const onFinishFailed = (errorInfo) => {
         console.error('Failed:', errorInfo);
     };
 
     const onFinish = (form) => {
-        add(form);
+        B(add)(cleanObject)({ ...form, year: form.year.year() });
         adjustMainAreaWide('5');
         history.push('/');
     };
@@ -32,13 +38,18 @@ function OtherBottle({ add, history, adjustMainAreaWide }) {
         <NewBottle>
             <Form
                 name="basic"
-                initialValues={{ remember: true }}
+                initialValues={{
+                    remember: true,
+                    rate: 2.5,
+                    price: 1
+                }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
                 <Form.Item
                     label="name"
                     name="name"
+                    normalize={toCapitalized}
                     rules={[
                         {
                             required: true,
@@ -90,7 +101,63 @@ function OtherBottle({ add, history, adjustMainAreaWide }) {
                         },
                     ]}
                 >
+                    <YearPicker />
+                </Form.Item>
+                <Form.Item
+                    label="rate"
+                    name="rate"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'rate',
+                        },
+                    ]}
+                >
+                    <Rate allowHalf defaultValue={2.5} />
+                </Form.Item>
+                <Form.Item
+                    label="price"
+                    name="price"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'price',
+                        },
+                    ]}
+                >
+                    <InputNumber min={0} />
+                </Form.Item>
+                <Form.Item
+                    label="appellation of origin"
+                    name="appellationOfOrigin"
+                    normalize={toCapitalized}
+                    rules={[
+                        {
+                            required: false,
+                            message: 'Appellation of origin',
+                        },
+                    ]}
+                >
                     <Input />
+                </Form.Item>
+                <Form.Item
+                    label="region"
+                    name="region"
+                    normalize={toCapitalized}
+                    rules={[
+                        {
+                            required: false,
+                            message: 'region',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    label="notes"
+                    name="notes"
+                >
+                    <Input.TextArea />
                 </Form.Item>
 
                 <Form.Item {...tailLayout}>
