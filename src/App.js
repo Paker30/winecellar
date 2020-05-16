@@ -41,7 +41,7 @@ const MainArea = Styled.div.attrs(({ columnEnd }) => ({ columnEnd: columnEnd || 
 `;
 const DetailArea = Styled.div`
     grid-area: detail;
-    grid-column-start: 4;
+    grid-column-start: 3;
     grid-column-end: 5;
     margin-left: 10px;
     margin-right: 10px;
@@ -127,7 +127,7 @@ export default class App extends Component {
                         <Title
                             title="Mi Bodega"
                             adjustMainAreaWide={this.adjustMainAreaWide}
-                            items={[{ link: <Link to="/cellar">Cellar</Link>, mainAreaWide: '5' }, { link: <Link to="/cellar/add">Add</Link>, mainAreaWide: '4' }]}
+                            items={[{ link: <Link to="/cellar">Cellar</Link>, mainAreaWide: '5' }, { link: <Link to="/cellar/add">Add</Link>, mainAreaWide: '3' }]}
                         />
                     </HeaderArea>
                     <MainArea columnEnd={mainAreaWide}>
