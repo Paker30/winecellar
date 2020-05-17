@@ -1,17 +1,18 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Form, Input, Button, Select, Rate, DatePicker, InputNumber } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import Styled from 'styled-components';
 
 const { YearPicker } = DatePicker;
 const { Option } = Select;
 
-const tailLayout = {
-    wrapperCol: {
-        offset: 8,
-        span: 16,
-    }
-};
+// const tailLayout = {
+//     wrapperCol: {
+//         offset: 8,
+//         span: 16,
+//     }
+// };
 
 const NewBottle = Styled.div`
     border: 1px solid #f0f0f0;
@@ -35,9 +36,19 @@ function OtherBottle({ add, history, adjustMainAreaWide }) {
     };
 
     return (
-        <NewBottle>
+        <NewBottle
+            style={{
+                fontFamily: 'aliens and cows',
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                fontSize: '28px',
+                lineHeight: '23px',
+                color: '#880C2D'
+            }}
+        >
             <Form
-                name="basic"
+                name="newBottle"
+                layout="vertical"
                 initialValues={{
                     remember: true,
                     rate: 2.5,
@@ -160,10 +171,8 @@ function OtherBottle({ add, history, adjustMainAreaWide }) {
                     <Input.TextArea />
                 </Form.Item>
 
-                <Form.Item {...tailLayout}>
-                    <Button type="primary" htmlType="submit">
-                        Save
-                    </Button>
+                <Form.Item>
+                    <Button htmlType="submit" style={{ backgroundColor: '#E1BBCA', color: '#FFFFFF' }} icon={<PlusOutlined />} />
                 </Form.Item>
             </Form>
         </NewBottle>
