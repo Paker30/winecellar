@@ -1,10 +1,12 @@
 {
   "name": "winecellar",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Remember all the wine I have drink this quarantine",
   "main": "index.js",
   "private": true,
-  "contributors": ["Melania <melapbq@gmail.com> (https://www.instagram.com/melapbq/?hl=es)"],
+  "contributors": [
+    "Melania <melapbq@gmail.com> (https://www.instagram.com/melapbq/?hl=es)"
+  ],
   "scripts": {
     "build-dev": "NODE_ENV=development webpack --mode=development",
     "build": "NODE_ENV=production webpack --mode=production",
