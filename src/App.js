@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
-import { Layout, Space } from 'antd';
+import { Layout } from 'antd';
 import Uniqid from 'uniqid';
 import PouchDB from 'pouchdb-browser';
 import Styled from 'styled-components';
@@ -9,6 +9,7 @@ import Cellar from './components/cellar';
 import Bottle from './components/bottle';
 import OtherBottle from './components/new';
 import { version } from '../package.json';
+import AddCup from '../assets/add_cup.svg';
 
 const { Footer } = Layout;
 const pickBottle = (bottles) => (bottleId) => bottles.find(({ id }) => id === bottleId);
@@ -125,13 +126,18 @@ export default class App extends Component {
                 <Container>
                     <HeaderArea>
                         <Title />
-                        <Space style={{
-                            marginTop: '52px',
-                            marginLeft: '26px',
-                            marginRight: '10px',
-                            width: '100%',
-                            borderBottom: '1px solid #E1BBCA'
-                        }}
+                        <div
+                            style={{
+                                marginTop: '52px',
+                                marginLeft: '26px',
+                                marginRight: '10px',
+                                width: '100%',
+                                borderBottom: '1px solid #E1BBCA',
+                                display: 'flex',
+                                alignItems: 'flex-end',
+                                flexWrap: 'wrap',
+                                padding: '4px'
+                            }}
                         >
                             <Link
                                 style={{
@@ -140,13 +146,22 @@ export default class App extends Component {
                                     'font-weight': 'normal',
                                     'font-size': '33px',
                                     'line-height': '27px',
-                                    color: '#880C2D',
+                                    color: '#880C2D'
                                 }}
                                 to="/cellar"
                             >
                                 Cellar
                             </Link>
-                        </Space>
+                            <Link
+                                to="/cellar/add"
+                                style={{
+                                    marginLeft: 'auto',
+                                    paddingRight: '30px'
+                                }}
+                            >
+                                <AddCup />
+                            </Link>
+                        </div>
                     </HeaderArea>
                     <MainArea columnEnd={mainAreaWide}>
                         <Switch>
