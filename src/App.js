@@ -49,29 +49,6 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            columns: [
-                {
-                    title: 'Name',
-                    dataIndex: 'name',
-                    key: 'name',
-                    render: (name, record) => <Link to={`/bottle?id=${record.id}`}>{name}</Link>
-                },
-                {
-                    title: 'Color',
-                    dataIndex: 'color',
-                    key: 'color'
-                },
-                {
-                    title: 'Type',
-                    dataIndex: 'type',
-                    key: 'type'
-                },
-                {
-                    title: 'Year',
-                    dataIndex: 'year',
-                    key: 'year'
-                },
-            ],
             bottles: [],
             db: new PouchDB('cellar_db')
         };
@@ -111,7 +88,7 @@ export default class App extends Component {
     }
 
     render() {
-        const { columns, bottles } = this.state;
+        const { bottles } = this.state;
         return (
             <Area>
                 <Router>
@@ -161,7 +138,6 @@ export default class App extends Component {
                                 </Route>
                                 <Route path="/cellar">
                                     <Cellar
-                                        columns={columns}
                                         bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/cellar/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
                                         deleteBootle={this.deleteBootle}
                                     />
