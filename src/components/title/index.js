@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 
 const { Header } = Layout;
 
 export default class Title extends Component {
     render() {
-        const { items, adjustMainAreaWide } = this.props;
         return (
-            <Header>
+            <Header
+                style={{
+                    background: '#B94F72',
+                    'font-family': 'Amalfi Coast',
+                    'font-style': 'normal',
+                    'font-weight': 'normal',
+                    'text-align': 'center',
+                    'font-size': '26px',
+                    'line-height': '82px',
+                    color: '#FFFFFF',
+                    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+                }}
+            >
                 <div className="logo" />
-                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['0']}>
-                    {// eslint-disable-next-line react/no-array-index-key
-                        items.map(({ link, mainAreaWide }, index) => (<Menu.Item onClick={() => adjustMainAreaWide(mainAreaWide)} key={index}>{link}</Menu.Item>))
-                    }
-                </Menu>
+                Los Vinos de Paco
             </Header>
         );
     }

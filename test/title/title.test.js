@@ -10,8 +10,5 @@ describe('Cellar title', () => {
         const MockAdjustArea = jest.fn();
         const title = shallow(<Title items={[{ link: <div id="menuOption" type="button">This is a mock</div>, mainAreaWide: 5 }]} adjustMainAreaWide={new MockAdjustArea()} />);
         expect(title.find('Header')).toHaveLength(1);
-        expect(title.find('Header').find('Menu')).toHaveLength(1);
-        title.find('#menuOption').simulate('click');
-        expect(MockAdjustArea.mock.calls).toHaveLength(1);
     });
 });

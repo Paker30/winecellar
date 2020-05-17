@@ -9,77 +9,50 @@ import Cellar from './components/cellar';
 import Bottle from './components/bottle';
 import OtherBottle from './components/new';
 import { version } from '../package.json';
+import AddCup from '../assets/add_cup.svg';
 
 const { Footer } = Layout;
 const pickBottle = (bottles) => (bottleId) => bottles.find(({ id }) => id === bottleId);
-const Container = Styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr;
-    gap: 15px 10px;
-    height: 100%;
-    grid-template-areas: 
-        "header header header header"
-        "main main main detail"
-        "footer footer footer footer";
-`;
+
 const HeaderArea = Styled.div`
     grid-area: header;
 `;
 const FooterArea = Styled.div`
     grid-area: footer;
-    align-self: end;
-    
 `;
-const MainArea = Styled.div.attrs(({ columnEnd }) => ({ columnEnd: columnEnd || '5' }))`
-    grid-area: main;
-    justify-items: center;
-    grid-column-start: 1;
-    grid-column-end: ${(props) => props.columnEnd};
-    margin-left: 10px;
-    margin-right: 10px;
+const MainArea = Styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    column-gap: 10px;
+    margin-left: 26px;
+    margin-right: 38px;
+    padding-top: 10px;
+`;
+const ListArea = Styled.div`
+    width: 100%;
 `;
 const DetailArea = Styled.div`
-    grid-area: detail;
-    grid-column-start: 3;
-    grid-column-end: 5;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 100%;
+`;
+
+const Area = Styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 4fr;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer"
 `;
 
 export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            columns: [
-                {
-                    title: 'Name',
-                    dataIndex: 'name',
-                    key: 'name',
-                    render: (name, record) => <Link to={`/bottle?id=${record.id}`}>{name}</Link>
-                },
-                {
-                    title: 'Color',
-                    dataIndex: 'color',
-                    key: 'color'
-                },
-                {
-                    title: 'Type',
-                    dataIndex: 'type',
-                    key: 'type'
-                },
-                {
-                    title: 'Year',
-                    dataIndex: 'year',
-                    key: 'year'
-                },
-            ],
             bottles: [],
-            mainAreaWide: '5',
             db: new PouchDB('cellar_db')
         };
         this.addBottle = this.addBottle.bind(this);
-        this.adjustMainAreaWide = this.adjustMainAreaWide.bind(this);
         this.deleteBootle = this.deleteBootle.bind(this);
     }
 
@@ -114,54 +87,92 @@ export default class App extends Component {
             .catch((error) => console.log('Something went wrong removing the bottle', error));
     }
 
-    adjustMainAreaWide(columnEnd = '5') {
-        this.setState({ mainAreaWide: columnEnd });
-    }
-
     render() {
-        const { columns, bottles, mainAreaWide } = this.state;
+        const { bottles } = this.state;
         return (
-            <Router>
-                <Container>
+            <Area>
+                <Router>
                     <HeaderArea>
-                        <Title
-                            title="Mi Bodega"
-                            adjustMainAreaWide={this.adjustMainAreaWide}
-                            items={[{ link: <Link to="/cellar">Cellar</Link>, mainAreaWide: '5' }, { link: <Link to="/cellar/add">Add</Link>, mainAreaWide: '3' }]}
-                        />
+                        <Title />
+                        <div
+                            style={{
+                                marginTop: '52px',
+                                marginLeft: '20px',
+                                marginRight: '10px',
+                                borderBottom: '1px solid #E1BBCA',
+                                display: 'flex',
+                                alignItems: 'flex-end',
+                                flexWrap: 'wrap',
+                                padding: '4px'
+                            }}
+                        >
+                            <Link
+                                style={{
+                                    'font-family': 'aliens and cows',
+                                    'font-style': 'normal',
+                                    'font-weight': 'normal',
+                                    'font-size': '33px',
+                                    'line-height': '27px',
+                                    color: '#880C2D'
+                                }}
+                                to="/cellar"
+                            >
+                                Cellar
+                            </Link>
+                            <Link
+                                to="/cellar/add"
+                                style={{
+                                    marginLeft: 'auto',
+                                    paddingRight: '30px'
+                                }}
+                            >
+                                <AddCup />
+                            </Link>
+                        </div>
                     </HeaderArea>
-                    <MainArea columnEnd={mainAreaWide}>
-                        <Switch>
-                            <Route exact path="/">
-                                <Redirect to="/cellar" />
-                            </Route>
-                            <Route path="/cellar">
-                                <Cellar
-                                    columns={columns}
-                                    bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/cellar/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
-                                    adjustMainAreaWide={this.adjustMainAreaWide}
-                                    deleteBootle={this.deleteBootle}
-                                />
-                            </Route>
-                        </Switch>
+                    <MainArea>
+                        <ListArea>
+                            <Switch>
+                                <Route exact path="/">
+                                    <Redirect to="/cellar" />
+                                </Route>
+                                <Route path="/cellar">
+                                    <Cellar
+                                        bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/cellar/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
+                                        deleteBootle={this.deleteBootle}
+                                    />
+                                </Route>
+                            </Switch>
+                        </ListArea>
+                        <DetailArea>
+                            <Switch>
+                                <Route path="/cellar/bottle">
+                                    <Bottle find={pickBottle(bottles)} />
+                                </Route>
+                                <Route path="/cellar/add">
+                                    <OtherBottle add={this.addBottle} />
+                                </Route>
+                            </Switch>
+                        </DetailArea>
                     </MainArea>
-                    <DetailArea>
-                        <Switch>
-                            <Route path="/cellar/bottle">
-                                <Bottle find={pickBottle(bottles)} />
-                            </Route>
-                            <Route path="/cellar/add">
-                                <OtherBottle add={this.addBottle} adjustMainAreaWide={this.adjustMainAreaWide} />
-                            </Route>
-                        </Switch>
-                    </DetailArea>
                     <FooterArea>
-                        <Footer style={{ textAlign: 'center' }}>
-                            {`Created by Paker30 version ${version}`}
+                        <Footer style={{ display: 'flex' }}>
+                            <span>
+                                Icons and design by &nbsp;
+                                <a
+                                    href="https://www.instagram.com/melapbq/?hl=es"
+                                    style={{ color: 'inherit' }}
+                                    rel="noopener noreferrer"
+                                    target="_blank"
+                                >
+                                    Mel
+                                </a>
+                            </span>
+                            <span style={{ marginLeft: 'auto' }}>{`v ${version}`}</span>
                         </Footer>
                     </FooterArea>
-                </Container>
-            </Router>
+                </Router>
+            </Area>
         );
     }
 }
