@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.0.0 (2020-05-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **icon:** the web has been resyled with Mel's design
+
+### Features
+
+* **icon:** add Mel's icon ([5799c87](https://github.com/Paker30/winecellar/commit/5799c87c4375320d71b2d918e32a945011368b19))
+
 ### 1.1.5 (2020-05-17)
 
 ### 1.1.4 (2020-05-17)
