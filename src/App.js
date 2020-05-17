@@ -36,7 +36,7 @@ const MainArea = Styled.div.attrs(({ columnEnd }) => ({ columnEnd: columnEnd || 
     justify-items: center;
     grid-column-start: 1;
     grid-column-end: ${(props) => props.columnEnd};
-    margin-left: 10px;
+    margin-left: 51px;
     margin-right: 10px;
 `;
 const DetailArea = Styled.div`
