@@ -81,7 +81,7 @@ const Price = Styled.div`
 
 export default class Cellar extends Component {
     render() {
-        const { bottles, adjustMainAreaWide, deleteBootle } = this.props;
+        const { bottles, deleteBootle } = this.props;
         return (
             <List
                 itemLayout="vertical"
@@ -91,10 +91,7 @@ export default class Cellar extends Component {
                         actions={[<IconText icon={DeleteOutlined} onClick={() => deleteBootle(bottle)} />]}
                         extra={wineIcon(bottle.color)(selectCup(bottle.color))}
                     >
-                        <List.Item.Meta
-                            title={title}
-                            onClick={() => adjustMainAreaWide('4')}
-                        />
+                        <List.Item.Meta title={title} />
                         <WineDescription>
                             <TypeArea>{bottle.type}</TypeArea>
                             <AppellationOfOriginArea>{bottle.appellationOfOrigin}</AppellationOfOriginArea>

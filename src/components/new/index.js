@@ -7,13 +7,6 @@ import Styled from 'styled-components';
 const { YearPicker } = DatePicker;
 const { Option } = Select;
 
-// const tailLayout = {
-//     wrapperCol: {
-//         offset: 8,
-//         span: 16,
-//     }
-// };
-
 const NewBottle = Styled.div`
     border: 1px solid #f0f0f0;
     padding: 24px;
@@ -24,14 +17,13 @@ const B = (f) => (g) => (x) => f(g(x));
 const capitalized = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 const toCapitalized = (str) => str.split(' ').map(capitalized).join(' ');
 
-function OtherBottle({ add, history, adjustMainAreaWide }) {
+function OtherBottle({ add, history }) {
     const onFinishFailed = (errorInfo) => {
         console.error('Failed:', errorInfo);
     };
 
     const onFinish = (form) => {
         B(add)(cleanObject)({ ...form, year: form.year.year() });
-        adjustMainAreaWide('5');
         history.push('/');
     };
 
