@@ -1,7 +1,8 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, withRouter } from 'react-router-dom';
 import Styled from 'styled-components';
-import { Rate } from 'antd';
+import { Rate, Button } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import PinkCup from '../../../assets/pink_cup.svg';
 import RedCup from '../../../assets/red_cup.svg';
 import WhiteCup from '../../../assets/white_cup.svg';
@@ -57,6 +58,10 @@ const DescriptionArea = Styled.div`
     align-self: end;
 `;
 
+const DeleteArea = Styled.div`
+    align-self: center;
+`;
+
 const ValueArea = Styled.div`
     grid-area: value;
     justify-self: end;
@@ -87,9 +92,10 @@ const Section = ({ title, description, value, border = true }) => (
     </DetailContainer>
 );
 
-function Bottle({ find }) {
+function Bottle({ find, deleteBootle, history }) {
     const query = new URLSearchParams(useLocation().search);
-    const { name, color, type, year, appellationOfOrigin, price, rate, region, notes } = find(query.get('id'));
+    const bottle = find(query.get('id'));
+    const { name, color, type, year, appellationOfOrigin, price, rate, region, notes } = bottle;
 
     return (
         <Detail>
@@ -102,8 +108,17 @@ function Bottle({ find }) {
                     {notes}
                 </ValueArea>
             </Notes>
+            <DeleteArea>
+                <Button
+                    icon={<DeleteOutlined />}
+                    onClick={() => {
+                        deleteBootle(bottle);
+                        history.push('/');
+                    }}
+                />
+            </DeleteArea>
         </Detail>
     );
 }
 
-export default Bottle;
+export default withRouter(Bottle);

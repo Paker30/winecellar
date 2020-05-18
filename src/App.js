@@ -139,7 +139,6 @@ export default class App extends Component {
                                 <Route path="/cellar">
                                     <Cellar
                                         bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/cellar/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
-                                        deleteBootle={this.deleteBootle}
                                     />
                                 </Route>
                             </Switch>
@@ -147,7 +146,7 @@ export default class App extends Component {
                         <DetailArea>
                             <Switch>
                                 <Route path="/cellar/bottle">
-                                    <Bottle find={pickBottle(bottles)} />
+                                    <Bottle find={pickBottle(bottles)} deleteBootle={this.deleteBootle} />
                                 </Route>
                                 <Route path="/cellar/add">
                                     <OtherBottle add={this.addBottle} />
