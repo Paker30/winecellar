@@ -77,6 +77,11 @@ export default class Cellar extends Component {
         return (
             <List
                 itemLayout="vertical"
+                bordered="true"
+                style={{
+                    borderRadius: '15px',
+                    boxShadow: 'inset -1px -1px 4px rgba(0, 0, 0, 0.25)'
+                }}
                 dataSource={bottles}
                 renderItem={({ bottle, title }) => (
                     <List.Item
