@@ -8,8 +8,14 @@ const { YearPicker } = DatePicker;
 const { Option } = Select;
 
 const NewBottle = Styled.div`
-    border: 1px solid #f0f0f0;
-    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    width: minmax(300px, 541px);
+    height: 870px;
+    top: 250px;
+    padding: 25px 70px 36px 77px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const cleanObject = (obj) => JSON.parse(JSON.stringify(obj));
@@ -28,16 +34,7 @@ function OtherBottle({ add, history }) {
     };
 
     return (
-        <NewBottle
-            style={{
-                fontFamily: 'aliens and cows',
-                fontStyle: 'normal',
-                fontWeight: 'normal',
-                fontSize: '28px',
-                lineHeight: '23px',
-                color: '#880C2D'
-            }}
-        >
+        <NewBottle>
             <Form
                 name="newBottle"
                 layout="vertical"
@@ -164,7 +161,7 @@ function OtherBottle({ add, history }) {
                 </Form.Item>
 
                 <Form.Item>
-                    <Button htmlType="submit" style={{ backgroundColor: '#E1BBCA', color: '#FFFFFF' }} icon={<PlusOutlined />} />
+                    <Button htmlType="submit" style={{ backgroundColor: '#E1BBCA', borderRadius: '12px', color: '#FFFFFF' }} icon={<PlusOutlined />} />
                 </Form.Item>
             </Form>
         </NewBottle>
