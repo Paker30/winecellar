@@ -22,6 +22,8 @@ const selectCup = (color) => {
 };
 
 const Detail = Styled.div`
+    display: flex;
+    flex-direction: column;
     width: minmax(300px, 541px);
     height: 513px;
     left: 899px;
@@ -58,10 +60,6 @@ const DescriptionArea = Styled.div`
     align-self: end;
 `;
 
-const DeleteArea = Styled.div`
-    align-self: center;
-`;
-
 const ValueArea = Styled.div`
     grid-area: value;
     justify-self: end;
@@ -76,6 +74,11 @@ const Notes = Styled.div`
     grid-template-areas:
         "description"
         "value"
+`;
+
+const Delete = Styled.div`
+    margin-top: auto;
+    align-self: center;
 `;
 
 const Section = ({ title, description, value, border = true }) => (
@@ -108,15 +111,21 @@ function Bottle({ find, deleteBootle, history }) {
                     {notes}
                 </ValueArea>
             </Notes>
-            <DeleteArea>
+            <Delete>
                 <Button
                     icon={<DeleteOutlined />}
+                    shape="round"
+                    style={{
+                        background: '#E1BBCA',
+                        color: '#FFFFFF',
+                        boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.25)'
+                    }}
                     onClick={() => {
                         deleteBootle(bottle);
                         history.push('/');
                     }}
                 />
-            </DeleteArea>
+            </Delete>
         </Detail>
     );
 }
