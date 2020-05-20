@@ -49,7 +49,7 @@ const selectCup = ({ type, color }) => {
     }
 };
 
-const WineColor = Styled.span`
+const DrinkColor = Styled.span`
     font-family: aliens and cows;
     font-style: normal;
     font-weight: normal;
@@ -58,11 +58,11 @@ const WineColor = Styled.span`
     color: #000000;
 `;
 
-const wineIcon = (color) => (icon) => (
+const drinkIcon = (color) => (icon) => (
     <div>
-        <WineColor>
+        <DrinkColor>
             {color}
-        </WineColor>
+        </DrinkColor>
         {icon}
     </div>
 );
@@ -122,7 +122,7 @@ export default class Cellar extends Component {
                 renderItem={({ bottle, title }) => (
                     <CellarWrapper>
                         <List.Item
-                            extra={wineIcon(bottle.color)(selectCup(bottle))}
+                            extra={drinkIcon(bottle.color)(selectCup(bottle))}
                         >
                             <List.Item.Meta title={title} />
                             <WineDescription>
