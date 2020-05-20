@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.3 (2020-05-20)
+
+
+### Bug Fixes
+
+* **navigation:** fall back to original navigation path ([4f3f30c](https://github.com/Paker30/winecellar/commit/4f3f30ca28e1ecce7b0dd6654f68832d26f44919))
+
 ### 2.0.2 (2020-05-20)
 
 ### 2.0.1 (2020-05-20)
