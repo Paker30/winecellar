@@ -64,7 +64,7 @@ const homeLink = (
 
 const addLink = (
     <Link to="/cellar/add">
-        <AddCup />
+        <AddCup viewBox="0 0 100 100" />
     </Link>
 );
 

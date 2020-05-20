@@ -8,11 +8,11 @@ import WhiteCup from '../../../assets/white_cup.svg';
 const selectCup = (color) => {
     switch (color) {
     case 'Red':
-        return <RedCup />;
+        return <RedCup viewBox="0 0 100 100" />;
     case 'White':
-        return <WhiteCup />;
+        return <WhiteCup viewBox="0 0 100 100" />;
     default:
-        return <PinkCup />;
+        return <PinkCup viewBox="0 0 100 100" />;
     }
 };
 
