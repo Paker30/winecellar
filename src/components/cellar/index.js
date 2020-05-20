@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
-import { List, Space } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
+import { List } from 'antd';
 import Styled from 'styled-components';
 import PinkCup from '../../../assets/pink_cup.svg';
 import RedCup from '../../../assets/red_cup.svg';
 import WhiteCup from '../../../assets/white_cup.svg';
 
-const IconText = ({ icon, text, onClick }) => (
-    <Space onClick={onClick}>
-        {React.createElement(icon)}
-        {text}
-    </Space>
-);
-
 const selectCup = (color) => {
     switch (color) {
     case 'Red':
-        return <RedCup />;
+        return <RedCup viewBox="0 0 100 100" />;
     case 'White':
-        return <WhiteCup />;
+        return <WhiteCup viewBox="0 0 100 100" />;
     default:
-        return <PinkCup />;
+        return <PinkCup viewBox="0 0 100 100" />;
     }
 };
 
@@ -79,25 +71,34 @@ const Price = Styled.div`
     color: #625656;
 `;
 
+const CellarWrapper = Styled.div`
+    border-radius: 15px;
+    box-shadow: inset -1px -1px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 20px;
+    margin-top: 5px;
+`;
+
 export default class Cellar extends Component {
     render() {
-        const { bottles, deleteBootle } = this.props;
+        const { bottles } = this.props;
         return (
             <List
                 itemLayout="vertical"
                 dataSource={bottles}
+                gutter="4"
                 renderItem={({ bottle, title }) => (
-                    <List.Item
-                        actions={[<IconText icon={DeleteOutlined} onClick={() => deleteBootle(bottle)} />]}
-                        extra={wineIcon(bottle.color)(selectCup(bottle.color))}
-                    >
-                        <List.Item.Meta title={title} />
-                        <WineDescription>
-                            <TypeArea>{bottle.type}</TypeArea>
-                            <AppellationOfOriginArea>{bottle.appellationOfOrigin}</AppellationOfOriginArea>
-                            <Price>{bottle.price}</Price>
-                        </WineDescription>
-                    </List.Item>
+                    <CellarWrapper>
+                        <List.Item
+                            extra={wineIcon(bottle.color)(selectCup(bottle.color))}
+                        >
+                            <List.Item.Meta title={title} />
+                            <WineDescription>
+                                <TypeArea>{bottle.type}</TypeArea>
+                                <AppellationOfOriginArea>{bottle.appellationOfOrigin}</AppellationOfOriginArea>
+                                <Price>{bottle.price}</Price>
+                            </WineDescription>
+                        </List.Item>
+                    </CellarWrapper>
                 )}
             />
         );
