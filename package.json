@@ -1,6 +1,6 @@
 {
   "name": "winecellar",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Remember all the wine I have drink this quarantine",
   "main": "index.js",
   "private": true,
