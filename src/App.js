@@ -8,6 +8,7 @@ import Title from './components/title';
 import Cellar from './components/cellar';
 import Bottle from './components/bottle';
 import OtherBottle from './components/new';
+import ToolBar from './components/toolBar';
 import { version } from '../package.json';
 import AddCup from '../assets/add_cup.svg';
 
@@ -44,6 +45,28 @@ const Area = Styled.div`
         "main"
         "footer"
 `;
+
+const homeLink = (
+    <Link
+        to="/cellar"
+        style={{
+            fontFamily: 'aliens and cows',
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontSize: '33px',
+            lineHeight: '27px',
+            color: '#880C2D'
+        }}
+    >
+        Cellar
+    </Link>
+);
+
+const addLink = (
+    <Link to="/cellar/add">
+        <AddCup />
+    </Link>
+);
 
 export default class App extends Component {
     constructor(props) {
@@ -94,41 +117,7 @@ export default class App extends Component {
                 <Router>
                     <HeaderArea>
                         <Title />
-                        <div
-                            style={{
-                                marginTop: '52px',
-                                marginLeft: '20px',
-                                marginRight: '10px',
-                                borderBottom: '1px solid #E1BBCA',
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                flexWrap: 'wrap',
-                                padding: '4px'
-                            }}
-                        >
-                            <Link
-                                style={{
-                                    'font-family': 'aliens and cows',
-                                    'font-style': 'normal',
-                                    'font-weight': 'normal',
-                                    'font-size': '33px',
-                                    'line-height': '27px',
-                                    color: '#880C2D'
-                                }}
-                                to="/cellar"
-                            >
-                                Cellar
-                            </Link>
-                            <Link
-                                to="/cellar/add"
-                                style={{
-                                    marginLeft: 'auto',
-                                    paddingRight: '30px'
-                                }}
-                            >
-                                <AddCup />
-                            </Link>
-                        </div>
+                        <ToolBar home={homeLink} add={addLink} />
                     </HeaderArea>
                     <MainArea>
                         <ListArea>
