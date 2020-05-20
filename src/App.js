@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import Uniqid from 'uniqid';
 import PouchDB from 'pouchdb-browser';
@@ -48,7 +48,7 @@ const Area = Styled.div`
 
 const homeLink = (
     <Link
-        to="/cellar"
+        to="/"
         style={{
             fontFamily: 'aliens and cows',
             fontStyle: 'normal',
@@ -63,7 +63,7 @@ const homeLink = (
 );
 
 const addLink = (
-    <Link to="/cellar/add">
+    <Link to="/add">
         <AddCup viewBox="0 0 100 100" />
     </Link>
 );
@@ -122,22 +122,19 @@ export default class App extends Component {
                     <MainArea>
                         <ListArea>
                             <Switch>
-                                <Route exact path="/">
-                                    <Redirect to="/cellar" />
-                                </Route>
-                                <Route path="/cellar">
+                                <Route path="/">
                                     <Cellar
-                                        bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/cellar/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
+                                        bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
                                     />
                                 </Route>
                             </Switch>
                         </ListArea>
                         <DetailArea>
                             <Switch>
-                                <Route path="/cellar/bottle">
+                                <Route path="/bottle">
                                     <Bottle find={pickBottle(bottles)} deleteBootle={this.deleteBootle} />
                                 </Route>
-                                <Route path="/cellar/add">
+                                <Route path="/add">
                                     <OtherBottle add={this.addBottle} />
                                 </Route>
                             </Switch>
