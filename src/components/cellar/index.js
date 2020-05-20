@@ -71,29 +71,34 @@ const Price = Styled.div`
     color: #625656;
 `;
 
+const CellarWrapper = Styled.div`
+    border-radius: 15px;
+    box-shadow: inset -1px -1px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 20px;
+    margin-top: 5px;
+`;
+
 export default class Cellar extends Component {
     render() {
         const { bottles } = this.props;
         return (
             <List
                 itemLayout="vertical"
-                bordered="true"
-                style={{
-                    borderRadius: '15px',
-                    boxShadow: 'inset -1px -1px 4px rgba(0, 0, 0, 0.25)'
-                }}
                 dataSource={bottles}
+                gutter="4"
                 renderItem={({ bottle, title }) => (
-                    <List.Item
-                        extra={wineIcon(bottle.color)(selectCup(bottle.color))}
-                    >
-                        <List.Item.Meta title={title} />
-                        <WineDescription>
-                            <TypeArea>{bottle.type}</TypeArea>
-                            <AppellationOfOriginArea>{bottle.appellationOfOrigin}</AppellationOfOriginArea>
-                            <Price>{bottle.price}</Price>
-                        </WineDescription>
-                    </List.Item>
+                    <CellarWrapper>
+                        <List.Item
+                            extra={wineIcon(bottle.color)(selectCup(bottle.color))}
+                        >
+                            <List.Item.Meta title={title} />
+                            <WineDescription>
+                                <TypeArea>{bottle.type}</TypeArea>
+                                <AppellationOfOriginArea>{bottle.appellationOfOrigin}</AppellationOfOriginArea>
+                                <Price>{bottle.price}</Price>
+                            </WineDescription>
+                        </List.Item>
+                    </CellarWrapper>
                 )}
             />
         );
