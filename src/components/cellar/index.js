@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { List } from 'antd';
 import Styled from 'styled-components';
+import { Trans } from 'react-i18next';
 import selectCup from '../../miscellanea';
 
 const DrinkColor = Styled.span`
@@ -76,13 +77,17 @@ export default class Cellar extends Component {
                 renderItem={({ bottle, title }) => (
                     <CellarWrapper>
                         <List.Item
-                            extra={drinkIcon(bottle.color)(selectCup(bottle))}
+                            extra={drinkIcon(<Trans i18nKey={`bottle.color.${bottle.color}`} />)(selectCup(bottle))}
                         >
                             <List.Item.Meta title={title} />
                             <WineDescription>
-                                <TypeArea>{bottle.type}</TypeArea>
+                                <TypeArea><Trans i18nKey={`bottle.type.${bottle.type}`} /></TypeArea>
                                 <AppellationOfOriginArea>{bottle.appellationOfOrigin}</AppellationOfOriginArea>
-                                <Price>{bottle.price}</Price>
+                                <Price>
+                                    {bottle.price}
+                                    &nbsp;
+                                    <Trans i18nKey="currency" />
+                                </Price>
                             </WineDescription>
                         </List.Item>
                     </CellarWrapper>

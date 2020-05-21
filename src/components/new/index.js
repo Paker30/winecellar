@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Form, Input, Button, Select, Rate, DatePicker, InputNumber } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import { Trans } from 'react-i18next';
 import Styled from 'styled-components';
 
 const { YearPicker } = DatePicker;
@@ -47,7 +48,7 @@ function OtherBottle({ add, history }) {
                 onFinishFailed={onFinishFailed}
             >
                 <Form.Item
-                    label="name"
+                    label={<Trans i18nKey="forms.new.name" />}
                     name="name"
                     normalize={toCapitalized}
                     rules={[
@@ -60,7 +61,7 @@ function OtherBottle({ add, history }) {
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    label="color"
+                    label={<Trans i18nKey="forms.new.color" />}
                     name="color"
                     rules={[
                         {
@@ -70,13 +71,13 @@ function OtherBottle({ add, history }) {
                     ]}
                 >
                     <Select style={{ width: 120 }}>
-                        <Option value="Red">Red</Option>
-                        <Option value="White">White</Option>
-                        <Option value="Pink">Pink</Option>
+                        <Option value="Red"><Trans i18nKey="bottle.color.Red" /></Option>
+                        <Option value="White"><Trans i18nKey="bottle.color.White" /></Option>
+                        <Option value="Pink"><Trans i18nKey="bottle.color.Pink" /></Option>
                     </Select>
                 </Form.Item>
                 <Form.Item
-                    label="type"
+                    label={<Trans i18nKey="forms.new.type" />}
                     name="type"
                     rules={[
                         {
@@ -86,13 +87,13 @@ function OtherBottle({ add, history }) {
                     ]}
                 >
                     <Select style={{ width: 120 }}>
-                        <Option value="Wine">Wine</Option>
-                        <Option value="Vermout">Vermout</Option>
-                        <Option value="Champagne">Champagne</Option>
+                        <Option value="Wine"><Trans i18nKey="bottle.type.Wine" /></Option>
+                        <Option value="Vermout"><Trans i18nKey="bottle.type.Vermout" /></Option>
+                        <Option value="Champagne"><Trans i18nKey="bottle.type.Champagne" /></Option>
                     </Select>
                 </Form.Item>
                 <Form.Item
-                    label="year"
+                    label={<Trans i18nKey="forms.new.year" />}
                     name="year"
                     rules={[
                         {
@@ -104,7 +105,7 @@ function OtherBottle({ add, history }) {
                     <YearPicker />
                 </Form.Item>
                 <Form.Item
-                    label="rate"
+                    label={<Trans i18nKey="forms.new.rate" />}
                     name="rate"
                     rules={[
                         {
@@ -116,7 +117,7 @@ function OtherBottle({ add, history }) {
                     <Rate allowHalf />
                 </Form.Item>
                 <Form.Item
-                    label="price"
+                    label={<Trans i18nKey="forms.new.price" />}
                     name="price"
                     rules={[
                         {
@@ -128,7 +129,7 @@ function OtherBottle({ add, history }) {
                     <InputNumber min={0} />
                 </Form.Item>
                 <Form.Item
-                    label="appellation of origin"
+                    label={<Trans i18nKey="forms.new.appellationOfOrigin" />}
                     name="appellationOfOrigin"
                     normalize={toCapitalized}
                     rules={[
@@ -141,7 +142,7 @@ function OtherBottle({ add, history }) {
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    label="region"
+                    label={<Trans i18nKey="forms.new.region" />}
                     name="region"
                     normalize={toCapitalized}
                     rules={[
@@ -154,7 +155,7 @@ function OtherBottle({ add, history }) {
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    label="notes"
+                    label={<Trans i18nKey="forms.new.notes" />}
                     name="notes"
                 >
                     <Input.TextArea />
