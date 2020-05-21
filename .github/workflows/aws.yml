@@ -22,7 +22,6 @@ jobs:
       with:
         node-version: '12.x'
     - run: npm install
-    - run: npm run test
     - run: git config user.email "${{ secrets.EMAIL }}" && git config user.name "${{ github.actor }}"
     - run: npm run release
     - name: Push release
