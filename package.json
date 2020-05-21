@@ -71,9 +71,13 @@
     "@ant-design/icons": "^4.1.0",
     "antd": "^4.2.0",
     "aphrodite": "^2.4.0",
+    "i18next": "^19.4.4",
+    "i18next-browser-languagedetector": "^4.2.0",
+    "i18next-http-backend": "^1.0.12",
     "pouchdb-browser": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^11.4.0",
     "react-router-dom": "^5.1.2",
     "styled-components": "^5.1.0",
     "uniqid": "^5.2.0"
