@@ -3,6 +3,7 @@ import { useLocation, withRouter } from 'react-router-dom';
 import Styled from 'styled-components';
 import { Rate, Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
+import { Trans, withTranslation } from 'react-i18next';
 import selectCup from '../../miscellanea';
 
 // eslint-disable-next-line no-confusing-arrow
@@ -82,7 +83,7 @@ const Section = ({ title, description, value, border = true }) => (
     </DetailContainer>
 );
 
-function Bottle({ find, deleteBootle, history }) {
+function Bottle({ find, deleteBootle, history, t }) {
     const query = new URLSearchParams(useLocation().search);
     const bottle = find(query.get('id'));
     const { name, color, type, year, appellationOfOrigin, price, rate, region, notes } = bottle;
@@ -90,10 +91,10 @@ function Bottle({ find, deleteBootle, history }) {
     return (
         <Detail>
             <Section title={name} description={appellationOfOrigin} value={selectCup({ color, type })} border={false} />
-            <Section title={color} description={type} value={price} />
+            <Section title={<Trans i18nKey={`bottle.color.${color}`} />} description={<Trans i18nKey={`bottle.type.${type}`} />} value={`${price} ${t('currency')}`} />
             <Section title={region} description={year} value={<Rate allowHalf disabled="true" value={rate} />} />
             <Notes>
-                <DescriptionArea style={{ borderBottom: '1px solid #C4C4C4' }}>Notes</DescriptionArea>
+                <DescriptionArea style={{ borderBottom: '1px solid #C4C4C4' }}><Trans i18nKey="notes" /></DescriptionArea>
                 <ValueArea style={{ justifySelf: 'start' }}>
                     {notes}
                 </ValueArea>
@@ -117,4 +118,4 @@ function Bottle({ find, deleteBootle, history }) {
     );
 }
 
-export default withRouter(Bottle);
+export default withTranslation()(withRouter(Bottle));

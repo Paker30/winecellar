@@ -1,0 +1,31 @@
+{
+    "title": "Paco's Cellar",
+    "cellar": "Cellar",
+    "bottle": {
+        "type": {
+            "Wine": "Wine",
+            "Vermout": "Vermout",
+            "Champagne": "Champagne"
+        },
+        "color": {
+            "Red": "Red",
+            "White": "White",
+            "Pink": "Pink"
+        }
+    },
+    "currency": "$",
+    "notes": "Notes",
+    "forms": {
+        "new": {
+            "name": "Bottle name",
+            "color": "Color",
+            "type": "Type",
+            "year": "Year",
+            "rate": "Rate",
+            "price": "Price",
+            "appellationOfOrigin": "Appellation of origin",
+            "region": "Region",
+            "notes": "Notes"
+        }
+    }
+}

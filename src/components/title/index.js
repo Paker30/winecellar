@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
+import { Trans } from 'react-i18next';
 
 const { Header } = Layout;
 
@@ -20,7 +21,7 @@ export default class Title extends Component {
                 }}
             >
                 <div className="logo" />
-                Los Vinos de Paco
+                <Trans i18nKey="title" />
             </Header>
         );
     }

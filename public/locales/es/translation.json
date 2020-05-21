@@ -1,0 +1,31 @@
+{
+    "title": "Los vinos de Paco",
+    "cellar": "Bodega",
+    "bottle": {
+        "type": {
+            "Wine": "Vino",
+            "Vermout": "Vermout",
+            "Champagne": "Champán"
+        },
+        "color": {
+            "Red": "Rojo",
+            "White": "Blanco",
+            "Pink": "Rosa"
+        }
+    },
+    "currency": "€",
+    "notes": "Notas",
+    "forms": {
+        "new": {
+            "name": "Nombre de la botella",
+            "color": "Color",
+            "type": "Tipo",
+            "year": "Año",
+            "rate": "Valoración",
+            "price": "Precio",
+            "appellationOfOrigin": "Denominación de origen",
+            "region": "Región",
+            "notes": "Notas"
+        }
+    }
+}

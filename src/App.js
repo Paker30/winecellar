@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 import Uniqid from 'uniqid';
 import PouchDB from 'pouchdb-browser';
 import Styled from 'styled-components';
+import { Trans } from 'react-i18next';
 import Title from './components/title';
 import Cellar from './components/cellar';
 import Bottle from './components/bottle';
@@ -58,7 +59,7 @@ const homeLink = (
             color: '#880C2D'
         }}
     >
-        Cellar
+        <Trans i18nKey="cellar" />
     </Link>
 );
 
