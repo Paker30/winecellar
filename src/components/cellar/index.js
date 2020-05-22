@@ -5,7 +5,7 @@ import { Trans } from 'react-i18next';
 import selectCup from '../../miscellanea';
 
 const DrinkColor = Styled.span`
-    font-family: aliens and cows;
+    font-family: Champagne and Limousines;
     font-style: normal;
     font-weight: normal;
     font-size: 28px;
@@ -79,7 +79,7 @@ export default class Cellar extends Component {
                         <List.Item
                             extra={drinkIcon(<Trans i18nKey={`bottle.color.${bottle.color}`} />)(selectCup(bottle))}
                         >
-                            <List.Item.Meta title={title} />
+                            <List.Item.Meta title={title} style={{ fontFamily: 'Champagne and Limousines' }} />
                             <WineDescription>
                                 <TypeArea><Trans i18nKey={`bottle.type.${bottle.type}`} /></TypeArea>
                                 <AppellationOfOriginArea>{bottle.appellationOfOrigin}</AppellationOfOriginArea>

@@ -29,13 +29,13 @@ const DetailContainer = Styled.div`
     grid-template-rows: 1fr 1fr;
     column-gap: 9px;
     grid-template-areas:
-        "title ."
+        "title title"
         "description value"
 `;
 
 const TitleArea = Styled.div`
     grid-area: title;
-    font-family: aliens and cows;
+    font-family: Champagne and Limousines;
     font-style: normal;
     font-weight: normal;
     font-size: 28px;
