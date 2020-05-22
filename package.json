@@ -74,6 +74,7 @@
     "i18next": "^19.4.4",
     "i18next-browser-languagedetector": "^4.2.0",
     "i18next-http-backend": "^1.0.12",
+    "moment": "^2.26.0",
     "pouchdb-browser": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

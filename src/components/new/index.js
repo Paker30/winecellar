@@ -4,12 +4,14 @@ import { Form, Input, Button, Select, Rate, DatePicker, InputNumber } from 'antd
 import { PlusOutlined } from '@ant-design/icons';
 import { Trans } from 'react-i18next';
 import Styled from 'styled-components';
+import Moment from 'moment';
 
 const { YearPicker } = DatePicker;
 const { Option } = Select;
 
 const NewBottle = Styled.div`
     display: flex;
+    font-family: Champagne and Limousines;
     flex-direction: column;
     width: minmax(300px, 541px);
     height: 870px;
@@ -17,6 +19,10 @@ const NewBottle = Styled.div`
     padding: 25px 20px 36px 20px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    label {
+        color: #880C2D;
+        content: ''
+    }
 `;
 
 const cleanObject = (obj) => JSON.parse(JSON.stringify(obj));
@@ -42,7 +48,8 @@ function OtherBottle({ add, history }) {
                 initialValues={{
                     remember: true,
                     rate: 2.5,
-                    price: 1
+                    price: 1,
+                    year: Moment('2019')
                 }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
