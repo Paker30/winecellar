@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.1.0 (2020-05-22)
+
+
+### Features
+
+* **style:** use new fonts and restyled description ([5dce322](https://github.com/Paker30/winecellar/commit/5dce322b4ac3f09c8b16022cdba30b2fd04870f5))
+
 ### 2.0.5 (2020-05-21)
 
 ### 2.0.4 (2020-05-20)
