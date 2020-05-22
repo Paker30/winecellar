@@ -14,7 +14,7 @@ const NewBottle = Styled.div`
     width: minmax(300px, 541px);
     height: 870px;
     top: 250px;
-    padding: 25px 70px 36px 77px;
+    padding: 25px 20px 36px 20px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
