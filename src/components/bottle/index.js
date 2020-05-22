@@ -34,7 +34,7 @@ const DetailContainer = Styled.div`
 
 const TitleArea = Styled.div`
     grid-area: title;
-    font-family: Champagne and Limousines;
+    font-family: Champagne and Limousines, Times, serif;
     font-style: normal;
     font-weight: normal;
     font-size: 28px;
