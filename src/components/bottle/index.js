@@ -26,7 +26,6 @@ const DetailContainer = Styled.div`
     border-bottom: 1px solid #C4C4C4;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     column-gap: 9px;
     grid-template-areas:
         "title title"
@@ -83,6 +82,20 @@ const Section = ({ title, description, value, border = true }) => (
     </DetailContainer>
 );
 
+const MainSection = ({ title, description, value, border = true }) => (
+    <DetailContainer style={{ border: displayBorder(border) }}>
+        <TitleArea style={{ display: 'flex' }}>
+            {title}
+            <div style={{ marginLeft: 'auto' }}>
+                {value}
+            </div>
+        </TitleArea>
+        <DescriptionArea>
+            {description}
+        </DescriptionArea>
+    </DetailContainer>
+);
+
 function Bottle({ find, deleteBootle, history, t }) {
     const query = new URLSearchParams(useLocation().search);
     const bottle = find(query.get('id'));
@@ -90,7 +103,7 @@ function Bottle({ find, deleteBootle, history, t }) {
 
     return (
         <Detail>
-            <Section title={name} description={appellationOfOrigin} value={selectCup({ color, type })} border={false} />
+            <MainSection title={name} description={appellationOfOrigin} value={selectCup({ color, type })} border={false} />
             <Section title={<Trans i18nKey={`bottle.color.${color}`} />} description={<Trans i18nKey={`bottle.type.${type}`} />} value={`${price} ${t('currency')}`} />
             <Section title={region} description={year} value={<Rate allowHalf disabled="true" value={rate} />} />
             <Notes>
