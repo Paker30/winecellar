@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.2.0 (2020-05-24)
+
+
+### Features
+
+* **style:** display area has margin when the screen is small ([c11c456](https://github.com/Paker30/winecellar/commit/c11c4563a2a6bc045e2531a2d9ade537785672c3))
+
 ## 2.1.0 (2020-05-22)
 
 
