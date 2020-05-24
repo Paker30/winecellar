@@ -19,8 +19,11 @@
         src: url(fonts/AmalfiCoast)
              format('truetype');
     }
+    .example::-webkit-scrollbar {
+        display: none;
+    }
 </style>
-<body>
+<body class="example">
     <div id="app" style="height: 100vh;"></div>
 
     <script src="./bundle.js"></script>
