@@ -2,7 +2,6 @@ import React from 'react';
 import Styled from 'styled-components';
 
 const ToolBarContainer = Styled.div`
-    margin-top: 52px;
     margin-left: 20px;
     margin-right: 10px;
     border-bottom: 1px solid #E1BBCA;
@@ -10,6 +9,7 @@ const ToolBarContainer = Styled.div`
     align-items: flex-end;
     flex-wrap: wrap;
     padding: 4px;
+    background: #FFFFFF;
 `;
 
 const AddWrapper = Styled.div`
