@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 import Uniqid from 'uniqid';
 import PouchDB from 'pouchdb-browser';
 import Styled from 'styled-components';
+import Media from 'styled-media-query';
 import { Trans } from 'react-i18next';
 import Title from './components/title';
 import Cellar from './components/cellar';
@@ -22,6 +23,15 @@ const HeaderArea = Styled.div`
 const FooterArea = Styled.div`
     grid-area: footer;
 `;
+
+const DetailArea = Styled.div`
+    width: 100%;
+    ${Media.lessThan('medium')`
+        margin-bottom: 10px;
+        margin-top: 10px;
+    `}
+`;
+
 const MainArea = Styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
@@ -30,12 +40,11 @@ const MainArea = Styled.div`
     margin-right: 38px;
     padding-top: 10px;
 `;
+
 const ListArea = Styled.div`
     width: 100%;
 `;
-const DetailArea = Styled.div`
-    width: 100%;
-`;
+
 
 const Area = Styled.div`
     display: grid;
