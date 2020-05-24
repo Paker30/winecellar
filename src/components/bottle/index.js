@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, withRouter } from 'react-router-dom';
 import Styled from 'styled-components';
+import Media from 'styled-media-query';
 import { Rate, Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { Trans, withTranslation } from 'react-i18next';
@@ -40,6 +41,9 @@ const TitleArea = Styled.div`
     font-size: 28px;
     line-height: 23px;
     color: #000000;
+    ${Media.lessThan('small')`
+    font-size: 18px;
+    `}
 `;
 
 const DescriptionArea = Styled.div`

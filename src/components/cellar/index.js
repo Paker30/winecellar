@@ -64,6 +64,9 @@ const CellarWrapper = Styled.div`
     box-shadow: inset -1px -1px 4px rgba(0, 0, 0, 0.25);
     padding-left: 20px;
     margin-top: 5px;
+    .ant-list-item-main {
+        min-width: 150px;
+    }
 `;
 
 export default class Cellar extends Component {
