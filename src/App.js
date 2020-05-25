@@ -54,6 +54,7 @@ const ListArea = Styled.div`
 
 const Area = Styled.div`
     display: grid;
+    height: inherit;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 4fr;
     grid-template-areas:
