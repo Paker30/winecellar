@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.2.2 (2020-05-25)
+
+
+### Bug Fixes
+
+* **height:** area component inherit height ([22f87e2](https://github.com/Paker30/winecellar/commit/22f87e2c5b5a18ca30d1e39937834c6894a511e3))
+
 ### 2.2.1 (2020-05-24)
 
 ## 2.2.0 (2020-05-24)
