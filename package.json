@@ -7,11 +7,12 @@
     "Melania <melapbq@gmail.com> (https://www.instagram.com/melapbq/?hl=es)"
   ],
   "scripts": {
-    "build-dev": "NODE_ENV=development webpack --mode=development",
-    "build": "NODE_ENV=production webpack --mode=production && npm run cache-on",
+    "add-worker": "cp service-worker.js public/",
+    "build-dev": "npm run add-worker && NODE_ENV=development webpack --mode=development",
+    "build": "npm run add-worker && npm run cache-on && NODE_ENV=production webpack --mode=production",
     "cache-on": "bin/service_cache.sh public/service-worker.js",
     "cm": "npx git-cz",
-    "dev-server": "NODE_ENV=development webpack-dev-server",
+    "dev-server": "npm run add-worker && NODE_ENV=development webpack-dev-server",
     "release": "standard-version",
     "test": "jest --coverage --colors"
   },
