@@ -105,7 +105,7 @@ dist
 
 # bundle file
 public/bundle.js
-public/service-worker.js
 
 # ide configuration
 .vscode
+public/service-worker.js

@@ -2,14 +2,14 @@
   "name": "winecellar",
   "version": "2.2.1",
   "description": "Remember all the wine I have drink this quarantine",
-  "main": "index.js",
   "private": true,
   "contributors": [
     "Melania <melapbq@gmail.com> (https://www.instagram.com/melapbq/?hl=es)"
   ],
   "scripts": {
     "build-dev": "NODE_ENV=development webpack --mode=development",
-    "build": "NODE_ENV=production webpack --mode=production",
+    "build": "NODE_ENV=production webpack --mode=production && npm run cache-on",
+    "cache-on": "bin/service_cache.sh public/service-worker.js",
     "cm": "npx git-cz",
     "dev-server": "NODE_ENV=development webpack-dev-server",
     "release": "standard-version",
