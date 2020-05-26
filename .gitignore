@@ -105,6 +105,7 @@ dist
 
 # bundle file
 public/bundle.js
+public/*.bundle.js
 
 # ide configuration
 .vscode
