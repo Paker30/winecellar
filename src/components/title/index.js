@@ -10,12 +10,12 @@ export default class Title extends Component {
             <Header
                 style={{
                     background: '#B94F72',
-                    'font-family': 'Amalfi Coast',
-                    'font-style': 'normal',
-                    'font-weight': 'normal',
-                    'text-align': 'center',
-                    'font-size': '26px',
-                    'line-height': '82px',
+                    fontFamily: 'Amalfi Coast',
+                    fontStyle: 'normal',
+                    fontWeight: 'normal',
+                    textAlign: 'center',
+                    fontSize: '26px',
+                    lineHeight: '82px',
                     color: '#FFFFFF',
                     textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
                 }}
