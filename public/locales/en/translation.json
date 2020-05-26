@@ -27,5 +27,6 @@
             "region": "Region",
             "notes": "Notes"
         }
-    }
+    },
+    "loading": "Loading..."
 }

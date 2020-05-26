@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import Uniqid from 'uniqid';
@@ -7,12 +7,14 @@ import Styled from 'styled-components';
 import Media from 'styled-media-query';
 import { Trans } from 'react-i18next';
 import Title from './components/title';
-import Cellar from './components/cellar';
-import Bottle from './components/bottle';
-import OtherBottle from './components/new';
 import ToolBar from './components/toolBar';
+import Loading from './components/loading';
 import { version } from '../package.json';
 import AddCup from '../assets/add_cup.svg';
+
+const Bottle = React.lazy(() => import('./components/bottle'));
+const OtherBottle = React.lazy(() => import('./components/new'));
+const Cellar = React.lazy(() => import('./components/cellar'));
 
 const { Footer } = Layout;
 const pickBottle = (bottles) => (bottleId) => bottles.find(({ id }) => id === bottleId);
@@ -140,19 +142,25 @@ export default class App extends Component {
                         <ListArea>
                             <Switch>
                                 <Route path="/">
-                                    <Cellar
-                                        bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
-                                    />
+                                    <Suspense fallback={<div><Trans i18nKey="loading" /></div>}>
+                                        <Cellar
+                                            bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
+                                        />
+                                    </Suspense>
                                 </Route>
                             </Switch>
                         </ListArea>
                         <DetailArea>
                             <Switch>
                                 <Route path="/bottle">
-                                    <Bottle find={pickBottle(bottles)} deleteBootle={this.deleteBootle} />
+                                    <Suspense fallback={<Loading />}>
+                                        <Bottle find={pickBottle(bottles)} deleteBootle={this.deleteBootle} />
+                                    </Suspense>
                                 </Route>
                                 <Route path="/add">
-                                    <OtherBottle add={this.addBottle} />
+                                    <Suspense fallback={<Loading />}>
+                                        <OtherBottle add={this.addBottle} />
+                                    </Suspense>
                                 </Route>
                             </Switch>
                         </DetailArea>
