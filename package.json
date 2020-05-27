@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "add-worker": "cp service-worker.js public/",
-    "build-dev": "npm run add-worker && NODE_ENV=development webpack --mode=development",
-    "build": "npm run add-worker && npm run cache-on && NODE_ENV=production webpack --mode=production",
+    "build-dev": "NODE_ENV=development webpack --mode=development && npm run add-worker",
+    "build": "NODE_ENV=production webpack --mode=production && npm run add-worker && npm run cache-on",
     "cache-on": "bin/service_cache.sh public/service-worker.js",
     "cm": "npx git-cz",
     "dev-server": "npm run add-worker && NODE_ENV=development webpack-dev-server --open",
