@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.2.8 (2020-05-27)
+
+
+### Bug Fixes
+
+* **fonts:** the file extions was missing ([03b1f1c](https://github.com/Paker30/winecellar/commit/03b1f1c133f969e3798522158e844479df62d749))
+
 ### 2.2.7 (2020-05-26)
 
 ### 2.2.6 (2020-05-25)
