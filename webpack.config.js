@@ -1,5 +1,6 @@
 const path = require('path');
-const webpack = require('webpack');
+const Webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -55,15 +56,19 @@ module.exports = {
         extensions: ['*', '.js', '.jsx']
     },
     plugins: [
-        new webpack.DefinePlugin({
+        new Webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             'process.env.DEBUG': JSON.stringify(process.env.DEBUG)
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new Webpack.HotModuleReplacementPlugin()
     ],
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         hot: true
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin({})],
     }
 };

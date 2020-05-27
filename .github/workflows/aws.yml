@@ -30,7 +30,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         tags: true
     - run: npm run build
-    - run: echo DEPLOY && ls -S public
+    - run: echo DEPLOY && ls -lhS public
     - name: Deploy into S3
       uses: opspresso/action-s3-sync@master
       env:
