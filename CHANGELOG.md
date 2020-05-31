@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.2.15 (2020-05-31)
+
+
+### Bug Fixes
+
+* **grid:** fix header heigth ([5b02e40](https://github.com/Paker30/winecellar/commit/5b02e4084ddeb6120af55863a29a6bea9a71f8bc))
+
 ### 2.2.14 (2020-05-29)
 
 ### 2.2.13 (2020-05-28)
