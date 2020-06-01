@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { List } from 'antd';
 import Styled from 'styled-components';
+import Media from 'styled-media-query';
 import { Trans } from 'react-i18next';
 import selectCup from '../../miscellanea';
 
@@ -11,6 +12,7 @@ const DrinkColor = Styled.span`
     font-size: 28px;
     line-height: 23px;
     color: #000000;
+    margin-right: 5px;
 `;
 
 const drinkIcon = (color) => (icon) => (
@@ -63,9 +65,20 @@ const CellarWrapper = Styled.div`
     border-radius: 15px;
     box-shadow: inset -1px -1px 4px rgba(0, 0, 0, 0.25);
     padding-left: 20px;
+    padding-right: 23px;
     margin-top: 5px;
+    .ant-list-item {
+        display: flex
+    }
     .ant-list-item > .ant-list-item-main {
         min-width: 150px;
+    }
+    .ant-list-item > .ant-list-item-extra {
+        display: inline-block;
+        align-self: flex-end;
+        ${Media.lessThan('medium')`
+            margin-bottom: 0px;
+        `}
     }
 `;
 
@@ -76,7 +89,6 @@ export default class Cellar extends Component {
             <List
                 itemLayout="vertical"
                 dataSource={bottles}
-                // gutter="4"
                 renderItem={({ bottle, title }) => (
                     <CellarWrapper>
                         <List.Item

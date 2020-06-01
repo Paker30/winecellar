@@ -10,11 +10,11 @@ import PinkVermout from '../assets/pink_vermout.svg';
 const wineCup = (color) => {
     switch (color) {
     case 'Red':
-        return <RedCup viewBox="0 0 100 100" />;
+        return <RedCup />;
     case 'White':
-        return <WhiteCup viewBox="0 0 100 100" />;
+        return <WhiteCup />;
     default:
-        return <PinkCup viewBox="0 0 100 100" />;
+        return <PinkCup />;
     }
 };
 
