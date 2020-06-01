@@ -28,6 +28,7 @@ const HeaderArea = Styled.div`
 const FooterArea = Styled.div`
     grid-area: footer;
     position: sticky;
+    height: 50%;
     bottom: 0;
 `;
 

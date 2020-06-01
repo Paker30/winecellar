@@ -14,7 +14,7 @@ const NewBottle = Styled.div`
     font-family: Champagne and Limousines;
     flex-direction: column;
     width: minmax(300px, 541px);
-    height: 870px;
+    height: inherit;
     top: 250px;
     padding: 25px 20px 36px 20px;
     background: #FFFFFF;
