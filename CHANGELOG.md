@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.1.0 (2020-06-01)
+
+
+### Features
+
+* **cellar:** align all elements at buttom ([7e0ccbd](https://github.com/Paker30/winecellar/commit/7e0ccbd2807df065d01d99e995271bc866df2563))
+
 ## 3.0.0 (2020-06-01)
 
 
