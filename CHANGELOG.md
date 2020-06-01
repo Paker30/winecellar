@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.2.1 (2020-06-01)
+
+
+### Bug Fixes
+
+* **height:** fix height problem in safari and firefox ([55b16d4](https://github.com/Paker30/winecellar/commit/55b16d4101046035fad5ce2f1781fd451555aca3))
+
 ## 3.2.0 (2020-06-01)
 
 
