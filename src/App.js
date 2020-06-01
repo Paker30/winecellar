@@ -96,6 +96,7 @@ export default class App extends Component {
         };
         this.addBottle = this.addBottle.bind(this);
         this.deleteBootle = this.deleteBootle.bind(this);
+        this.updateBottle = this.updateBottle.bind(this);
     }
 
     componentDidMount() {
@@ -114,11 +115,20 @@ export default class App extends Component {
         const { bottles, db } = this.state;
         const bottleId = Uniqid('bottle-');
         const id = Uniqid();
-        db.put({ _id: id, id: bottleId, ...bottle })
+        db.put({ ...bottle, _id: id, id: bottleId })
             .then(({ rev }) => {
                 this.setState({ bottles: [...bottles, { id: bottleId, _id: id, ...bottle, _rev: rev }] });
             })
             .catch((error) => console.log('Something went wrong adding the bottle', error));
+    }
+
+    updateBottle(bottle) {
+        const { bottles, db } = this.state;
+        db.put(bottle)
+            .then(({ rev }) => {
+                this.setState({ bottles: [...bottles.filter(({ id }) => id !== bottle.id), { ...bottle, _rev: rev }] });
+            })
+            .catch((error) => console.log('Something went wrong updating the bottle', error));
     }
 
     deleteBootle(bottle) {
@@ -159,7 +169,12 @@ export default class App extends Component {
                                 </Route>
                                 <Route path="/add">
                                     <Suspense fallback={<Loading />}>
-                                        <OtherBottle add={this.addBottle} />
+                                        <OtherBottle add={this.addBottle} find={pickBottle(bottles)} />
+                                    </Suspense>
+                                </Route>
+                                <Route path="/edit">
+                                    <Suspense fallback={<Loading />}>
+                                        <OtherBottle add={this.updateBottle} find={pickBottle(bottles)} />
                                     </Suspense>
                                 </Route>
                             </Switch>

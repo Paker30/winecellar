@@ -3,7 +3,7 @@ import { useLocation, withRouter } from 'react-router-dom';
 import Styled from 'styled-components';
 import Media from 'styled-media-query';
 import { Rate, Button } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Trans, withTranslation } from 'react-i18next';
 import selectCup from '../../miscellanea';
 
@@ -67,9 +67,10 @@ const Notes = Styled.div`
         "value"
 `;
 
-const Delete = Styled.div`
+const Buttons = Styled.div`
     margin-top: auto;
     align-self: center;
+    display: flex;
 `;
 
 const Section = ({ title, description, value, border = true }) => (
@@ -116,21 +117,36 @@ function Bottle({ find, deleteBootle, history, t }) {
                     {notes}
                 </ValueArea>
             </Notes>
-            <Delete>
+            <Buttons>
+                <Button
+                    onClick={() => {
+                        history.push(`/edit?id=${bottle.id}`);
+                    }}
+                    shape="round"
+                    style={{
+                        background: '#FFFFFF',
+                        color: '#E1BBCA',
+                        boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.25)',
+                        marginRight: '13px'
+                    }}
+                    icon={<EditOutlined />}
+                />
+
                 <Button
                     icon={<DeleteOutlined />}
                     shape="round"
                     style={{
                         background: '#E1BBCA',
                         color: '#FFFFFF',
-                        boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.25)'
+                        boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.25)',
+                        marginLeft: '13px'
                     }}
                     onClick={() => {
                         deleteBootle(bottle);
                         history.push('/');
                     }}
                 />
-            </Delete>
+            </Buttons>
         </Detail>
     );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useLocation } from 'react-router-dom';
 import { Form, Input, Button, Select, Rate, DatePicker, InputNumber } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { Trans } from 'react-i18next';
@@ -30,13 +30,17 @@ const B = (f) => (g) => (x) => f(g(x));
 const capitalized = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 const toCapitalized = (str) => str.split(' ').map(capitalized).join(' ');
 
-function OtherBottle({ add, history }) {
+function OtherBottle({ add, history, find }) {
+    const query = new URLSearchParams(useLocation().search);
+    const bottle = find(query.get('id')) || {};
+
     const onFinishFailed = (errorInfo) => {
         console.error('Failed:', errorInfo);
     };
 
     const onFinish = (form) => {
-        B(add)(cleanObject)({ ...form, year: form.year.year() });
+        // eslint-disable-next-line no-underscore-dangle
+        B(add)(cleanObject)({ ...form, year: form.year.year(), _id: bottle._id, _rev: bottle._rev, id: bottle.id });
         history.push('/');
     };
 
@@ -47,9 +51,15 @@ function OtherBottle({ add, history }) {
                 layout="vertical"
                 initialValues={{
                     remember: true,
-                    rate: 2.5,
-                    price: 1,
-                    year: Moment('2019')
+                    rate: bottle.rate || 2.5,
+                    price: bottle.price || 1,
+                    year: bottle.year ? Moment(bottle.year.toString()) : Moment('2019'),
+                    name: bottle.name || undefined,
+                    color: bottle.color || undefined,
+                    type: bottle.type || undefined,
+                    notes: bottle.notes || undefined,
+                    region: bottle.region || undefined,
+                    appellationOfOrigin: bottle.appellationOfOrigin || undefined
                 }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
