@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.2.0 (2020-06-01)
+
+
+### Features
+
+* **toolbar:** add button is pink with white image ([e669628](https://github.com/Paker30/winecellar/commit/e669628e93b5eafb2b26f6d845ddc942d078db78))
+
 ## 3.1.0 (2020-06-01)
 
 
