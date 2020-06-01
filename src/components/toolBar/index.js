@@ -14,7 +14,13 @@ const ToolBarContainer = Styled.div`
 
 const AddWrapper = Styled.div`
     margin-left: auto;
-    padding-right: 30px;
+    padding-top: 9px;
+    padding-right: 25px;
+    padding-left: 15px;
+    border-radius: 50%;
+    background: #E1BBCA;
+    height: 50px;
+    width: 50px;
 `;
 
 export default function ToolBar({ home, add }) {

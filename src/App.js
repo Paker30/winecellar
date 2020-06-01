@@ -83,7 +83,7 @@ const homeLink = (
 
 const addLink = (
     <Link to="/add">
-        <AddCup viewBox="0 0 100 100" />
+        <AddCup width="50" height="50" viewBox="0 0 150 150" />
     </Link>
 );
 
