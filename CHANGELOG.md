@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.0.0 (2020-06-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **update:** bottles from cellar can be update
+
+### Features
+
+* **update:** update a bottle from the cellar ([560e22b](https://github.com/Paker30/winecellar/commit/560e22baf8b10873026232c5d8ce0479e6c1da3c))
+
 ### 2.2.15 (2020-05-31)
 
 
