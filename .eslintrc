@@ -13,6 +13,8 @@
         "max-len": "off",
         "react/jsx-props-no-spreading": "off",
         "react/jsx-indent-props": "off",
-        "no-sequences": "off"
+        "no-sequences": "off",
+        "no-confusing-arrow": "off",
+        "no-underscore-dangle": "off"
     }
 }

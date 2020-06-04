@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import Uniqid from 'uniqid';
 import PouchDB from 'pouchdb-browser';
@@ -9,6 +9,7 @@ import { Trans } from 'react-i18next';
 import Title from './components/title';
 import ToolBar from './components/toolBar';
 import Loading from './components/loading';
+import Login from './components/login';
 import { version } from '../package.json';
 import AddCup from '../assets/add_cup.svg';
 
@@ -88,23 +89,53 @@ const addLink = (
     </Link>
 );
 
+function PrivateRoute({ userLogged, children, ...rest }) {
+    return (
+        <Route
+            {...rest}
+            // eslint-disable-next-line arrow-body-style
+            render={() => {
+                return userLogged
+                    ? (children)
+                    : (
+                        <Redirect
+                            to={{
+                                pathname: '/login'
+                            }}
+                        />
+                    );
+            }}
+        />
+    );
+}
+
 export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             bottles: [],
+            user: { name: '' },
             db: new PouchDB('cellar_db')
         };
         this.addBottle = this.addBottle.bind(this);
         this.deleteBootle = this.deleteBootle.bind(this);
         this.updateBottle = this.updateBottle.bind(this);
+        this.saveUser = this.saveUser.bind(this);
     }
 
     componentDidMount() {
         const { db } = this.state;
         db.allDocs({ include_docs: true, descending: true })
             .then(({ rows }) => {
-                this.setState({ bottles: rows.map(({ doc }) => doc) });
+                const { bottles, user } = rows.reduce((acc, row) => {
+                    // eslint-disable-next-line no-unused-expressions
+                    row.id.match(/user-/)
+                        ? acc.user = { ...row.doc }
+                        : acc.bottles = [...acc.bottles, row.doc];
+                    return acc;
+                }, { bottles: [], user: { name: '' } });
+                this.setState({ bottles });
+                this.setState({ user });
             })
             .catch((error) => {
                 console.error('Something went wrong fetching the bottles', error);
@@ -140,13 +171,29 @@ export default class App extends Component {
             .catch((error) => console.log('Something went wrong removing the bottle', error));
     }
 
+    saveUser(user) {
+        const { db } = this.state;
+        db.put({ _id: Uniqid('user-'), id: Uniqid(), name: user })
+            .then(() => this.setState({ user: { name: user } }))
+            .catch((error) => console.log('Something went wrong saving your name', error));
+    }
+
     render() {
-        const { bottles } = this.state;
+        const { bottles, user } = this.state;
+        const mainContent = user.name
+            ? (
+                <Cellar
+                    bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
+                />
+            )
+            : (
+                <Login saveUser={this.saveUser} />
+            );
         return (
             <Area>
                 <Router>
                     <HeaderArea>
-                        <Title />
+                        <Title userName={user} />
                         <ToolBar home={homeLink} add={addLink} />
                     </HeaderArea>
                     <MainArea>
@@ -154,9 +201,7 @@ export default class App extends Component {
                             <Switch>
                                 <Route path="/">
                                     <Suspense fallback={<div><Trans i18nKey="loading" /></div>}>
-                                        <Cellar
-                                            bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
-                                        />
+                                        {mainContent}
                                     </Suspense>
                                 </Route>
                             </Switch>
@@ -168,11 +213,11 @@ export default class App extends Component {
                                         <Bottle find={pickBottle(bottles)} deleteBootle={this.deleteBootle} />
                                     </Suspense>
                                 </Route>
-                                <Route path="/add">
+                                <PrivateRoute userLogged={user.name} path="/add">
                                     <Suspense fallback={<Loading />}>
                                         <OtherBottle add={this.addBottle} find={pickBottle(bottles)} />
                                     </Suspense>
-                                </Route>
+                                </PrivateRoute>
                                 <Route path="/edit">
                                     <Suspense fallback={<Loading />}>
                                         <OtherBottle add={this.updateBottle} find={pickBottle(bottles)} />

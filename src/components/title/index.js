@@ -6,6 +6,8 @@ const { Header } = Layout;
 
 export default class Title extends Component {
     render() {
+        const { userName } = this.props;
+
         return (
             <Header
                 style={{
@@ -22,6 +24,7 @@ export default class Title extends Component {
             >
                 <div className="logo" />
                 <Trans i18nKey="title" />
+                {userName.name}
             </Header>
         );
     }

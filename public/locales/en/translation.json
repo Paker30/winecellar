@@ -1,5 +1,5 @@
 {
-    "title": "Paco's Cellar",
+    "title": "The cellar of ",
     "cellar": "Cellar",
     "bottle": {
         "type": {
@@ -26,6 +26,9 @@
             "appellationOfOrigin": "Appellation of origin",
             "region": "Region",
             "notes": "Notes"
+        },
+        "login": {
+            "user": "What's your name?"
         }
     },
     "loading": "Loading..."

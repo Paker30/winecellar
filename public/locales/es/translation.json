@@ -1,5 +1,5 @@
 {
-    "title": "Los vinos de Paco",
+    "title": "Los vinos de ",
     "cellar": "Bodega",
     "bottle": {
         "type": {
@@ -26,6 +26,9 @@
             "appellationOfOrigin": "Denominación de origen",
             "region": "Región",
             "notes": "Notas"
+        },
+        "login": {
+            "user": "¿Cómo te llamas?"
         }
     },
     "loading": "Cargando..."
