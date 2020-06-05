@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.3.1 (2020-06-05)
+
+
+### Bug Fixes
+
+* **i18n:** init method returns a promise ([92841f4](https://github.com/Paker30/winecellar/commit/92841f409345bfd72c4029edb04b2d339505b695))
+
 ## 3.3.0 (2020-06-05)
 
 
