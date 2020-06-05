@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.3.2 (2020-06-05)
+
+
+### Bug Fixes
+
+* **header:** resize text font for small screens ([9a841b9](https://github.com/Paker30/winecellar/commit/9a841b9bb570247c5a48c55df61521c964c9c4c0))
+
 ### 3.3.1 (2020-06-05)
 
 
