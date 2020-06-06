@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 4.0.0 (2020-06-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **serviceworker:** instead of a custom service-worker file, i've used the webpackg plugin
+
+* **serviceworker:** use webpack service-worker ([1e6cbad](https://github.com/Paker30/winecellar/commit/1e6cbad6ef019a8f63df0f0bff9964e9e504d3e8))
+
 ### 3.3.2 (2020-06-05)
 
 
