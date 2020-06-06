@@ -1,6 +1,7 @@
 const path = require('path');
 const Webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -60,7 +61,28 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             'process.env.DEBUG': JSON.stringify(process.env.DEBUG)
         }),
-        new Webpack.HotModuleReplacementPlugin()
+        new Webpack.HotModuleReplacementPlugin(),
+        new WorkboxPlugin.GenerateSW({
+            // Do not precache images
+            exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+            clientsClaim: true,
+            skipWaiting: true,
+            // Define runtime caching rules.
+            runtimeCaching: [{
+                // Match any request that ends with .png, .jpg, .jpeg or .svg.
+                urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+                // Apply a cache-first strategy.
+                handler: 'CacheFirst',
+                options: {
+                    // Use a custom cache name.
+                    cacheName: 'images',
+                    // Only cache 10 images.
+                    expiration: {
+                        maxEntries: 10,
+                    },
+                }
+            }],
+        })
     ],
     devtool: 'cheap-module-eval-source-map',
     devServer: {
