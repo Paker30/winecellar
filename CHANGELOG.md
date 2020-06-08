@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 4.0.3 (2020-06-08)
+
+
+### Bug Fixes
+
+* **scroll:** wine list and new form, scroll by their own ([7c49631](https://github.com/Paker30/winecellar/commit/7c4963132ed93e63a6d9187432ab47868328f3eb))
+
 ### 4.0.2 (2020-06-08)
 
 ### 4.0.1 (2020-06-08)
