@@ -4,6 +4,7 @@ import { Form, Input, Button, Select, Rate, DatePicker, InputNumber } from 'antd
 import { PlusOutlined } from '@ant-design/icons';
 import { Trans } from 'react-i18next';
 import Styled from 'styled-components';
+import Media from 'styled-media-query';
 import Moment from 'moment';
 
 const { YearPicker } = DatePicker;
@@ -23,6 +24,13 @@ const NewBottle = Styled.div`
         color: #880C2D;
         content: ''
     }
+    ${Media.greaterThan('medium')`
+        max-height: 712px;
+        overflow: auto;
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    `}
 `;
 
 const cleanObject = (obj) => JSON.parse(JSON.stringify(obj));

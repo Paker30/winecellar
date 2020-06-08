@@ -61,7 +61,7 @@ const Price = Styled.div`
     color: #625656;
 `;
 
-const CellarWrapper = Styled.div`
+const BottleWrapper = Styled.div`
     border-radius: 15px;
     box-shadow: inset -1px -1px 4px rgba(0, 0, 0, 0.25);
     padding-left: 20px;
@@ -82,32 +82,44 @@ const CellarWrapper = Styled.div`
     }
 `;
 
+const CellarWrapper = Styled.div`
+    ${Media.greaterThan('medium')`
+        max-height: 712px;
+        overflow: auto;
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    `}
+`;
+
 export default class Cellar extends Component {
     render() {
         const { bottles } = this.props;
         return (
-            <List
-                itemLayout="vertical"
-                dataSource={bottles}
-                renderItem={({ bottle, title }) => (
-                    <CellarWrapper>
-                        <List.Item
-                            extra={drinkIcon(<Trans i18nKey={`bottle.color.${bottle.color}`} />)(selectCup(bottle))}
-                        >
-                            <List.Item.Meta title={title} style={{ fontFamily: 'Champagne and Limousines' }} />
-                            <WineDescription>
-                                <TypeArea><Trans i18nKey={`bottle.type.${bottle.type}`} /></TypeArea>
-                                <AppellationOfOriginArea>{bottle.appellationOfOrigin}</AppellationOfOriginArea>
-                                <Price>
-                                    {bottle.price}
+            <CellarWrapper>
+                <List
+                    itemLayout="vertical"
+                    dataSource={bottles}
+                    renderItem={({ bottle, title }) => (
+                        <BottleWrapper>
+                            <List.Item
+                                extra={drinkIcon(<Trans i18nKey={`bottle.color.${bottle.color}`} />)(selectCup(bottle))}
+                            >
+                                <List.Item.Meta title={title} style={{ fontFamily: 'Champagne and Limousines' }} />
+                                <WineDescription>
+                                    <TypeArea><Trans i18nKey={`bottle.type.${bottle.type}`} /></TypeArea>
+                                    <AppellationOfOriginArea>{bottle.appellationOfOrigin}</AppellationOfOriginArea>
+                                    <Price>
+                                        {bottle.price}
                                     &nbsp;
-                                    <Trans i18nKey="currency" />
-                                </Price>
-                            </WineDescription>
-                        </List.Item>
-                    </CellarWrapper>
-                )}
-            />
+                                        <Trans i18nKey="currency" />
+                                    </Price>
+                                </WineDescription>
+                            </List.Item>
+                        </BottleWrapper>
+                    )}
+                />
+            </CellarWrapper>
         );
     }
 }
