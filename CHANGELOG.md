@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 4.1.0 (2020-06-15)
+
+
+### Features
+
+* **list:** add customize image when cella is empty ([ccbf0c7](https://github.com/Paker30/winecellar/commit/ccbf0c7894d3e82d491daf0cfa6acdd95c66f709))
+
 ### 4.0.3 (2020-06-08)
 
 
