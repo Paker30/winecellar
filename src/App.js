@@ -10,6 +10,7 @@ import Title from './components/title';
 import ToolBar from './components/toolBar';
 import Loading from './components/loading';
 import Login from './components/login';
+import Search from './components/search';
 import { version } from '../package.json';
 import AddCup from '../assets/add_cup.svg';
 
@@ -18,7 +19,17 @@ const OtherBottle = React.lazy(() => import('./components/new'));
 const Cellar = React.lazy(() => import('./components/cellar'));
 
 const { Footer } = Layout;
+
 const pickBottle = (bottles) => (bottleId) => bottles.find(({ id }) => id === bottleId);
+const retrieveAll = (db) => db.allDocs({ include_docs: true, descending: true })
+    .then(({ rows }) => rows.reduce((acc, row) => {
+        // eslint-disable-next-line no-unused-expressions
+        row.id.match(/user-/)
+            ? acc.user = { ...row.doc }
+            : acc.bottles = [...acc.bottles, row.doc];
+        return acc;
+    }, { bottles: [], user: { name: '' } }));
+const sameName = (nameA) => (nameB) => nameA.toLowerCase().includes(nameB.toLowerCase());
 
 const HeaderArea = Styled.div`
     grid-area: header;
@@ -113,6 +124,7 @@ export default class App extends Component {
         super(props);
         this.state = {
             bottles: [],
+            searchByName: '',
             user: { name: '' },
             db: new PouchDB('cellar_db')
         };
@@ -120,19 +132,13 @@ export default class App extends Component {
         this.deleteBootle = this.deleteBootle.bind(this);
         this.updateBottle = this.updateBottle.bind(this);
         this.saveUser = this.saveUser.bind(this);
+        this.search = this.search.bind(this);
     }
 
     componentDidMount() {
         const { db } = this.state;
-        db.allDocs({ include_docs: true, descending: true })
-            .then(({ rows }) => {
-                const { bottles, user } = rows.reduce((acc, row) => {
-                    // eslint-disable-next-line no-unused-expressions
-                    row.id.match(/user-/)
-                        ? acc.user = { ...row.doc }
-                        : acc.bottles = [...acc.bottles, row.doc];
-                    return acc;
-                }, { bottles: [], user: { name: '' } });
+        retrieveAll(db)
+            .then(({ bottles, user }) => {
                 this.setState({ bottles });
                 this.setState({ user });
             })
@@ -177,12 +183,25 @@ export default class App extends Component {
             .catch((error) => console.log('Something went wrong saving your name', error));
     }
 
+    search(value) {
+        const { bottles } = this.state;
+
+        const filteredBottles = bottles.filter(({ name }) => sameName(name)(value));
+
+        if (filteredBottles.length) {
+            return filteredBottles;
+        }
+
+        return bottles;
+    }
+
     render() {
-        const { bottles, user } = this.state;
+        const { bottles, user, searchByName } = this.state;
+
         const mainContent = user.name
             ? (
                 <Cellar
-                    bottles={bottles.map((bottle) => ({ bottle, title: <Link to={`/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
+                    bottles={this.search(searchByName).map((bottle) => ({ bottle, title: <Link to={`/bottle?id=${bottle.id}`}>{bottle.name}</Link> }))}
                 />
             )
             : (
@@ -193,7 +212,11 @@ export default class App extends Component {
                 <Router>
                     <HeaderArea>
                         <Title userName={user} />
-                        <ToolBar home={homeLink} add={addLink} />
+                        <ToolBar
+                            home={homeLink}
+                            add={addLink}
+                            search={<Search onSearch={(value) => this.setState({ searchByName: value })} />}
+                        />
                     </HeaderArea>
                     <MainArea>
                         <ListArea>
