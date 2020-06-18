@@ -29,11 +29,11 @@
         src: url(fonts/AmalfiCoast.ttf)
              format('truetype');
     }
-    .example::-webkit-scrollbar {
+    .body::-webkit-scrollbar {
         display: none;
     }
 </style>
-<body class="example">
+<body class="body">
     <script>
         if ('serviceWorker' in navigator) {
           window.addEventListener('load', function() {
@@ -55,9 +55,8 @@
       <h1>Upss something went wrong :(</h1>
       <h2>It seems your browser has Javascript disabled, enable it and reload please</h2>
     </noscript>
-    <div id="app" style="height: 100vh;"></div>
+    <div id="app" style="height: 100%;"></div>
 
-    <script src="./service-worker.js"></script>
     <script src="./bundle.js"></script>
 </body>
 
