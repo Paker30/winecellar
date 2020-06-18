@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 4.2.0 (2020-06-18)
+
+
+### Features
+
+* **search:** search logic and styled ([2da46f8](https://github.com/Paker30/winecellar/commit/2da46f820ccef7bd1016f81253eba9c9f17e9f4a))
+
 ## 4.1.0 (2020-06-15)
 
 
