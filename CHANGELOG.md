@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 4.2.2 (2020-06-18)
+
+
+### Bug Fixes
+
+* **height:** fast fix to handle hight in safari and firefox ([0d33021](https://github.com/Paker30/winecellar/commit/0d330219fea64d6f2d159b5497553a901061dcb8))
+
 ### 4.2.1 (2020-06-18)
 
 ## 4.2.0 (2020-06-18)
