@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 4.2.3 (2020-07-01)
+
+
+### Bug Fixes
+
+* **cellar:** font size was quite big in small devices ([4a2a4f7](https://github.com/Paker30/winecellar/commit/4a2a4f7c2bd516dca547760d7239a61b2591d436))
+
 ### 4.2.2 (2020-06-18)
 
 
