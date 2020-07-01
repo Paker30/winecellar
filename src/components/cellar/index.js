@@ -10,7 +10,7 @@ const DrinkColor = Styled.span`
     font-family: Champagne and Limousines;
     font-style: normal;
     font-weight: normal;
-    font-size: 28px;
+    font-size: 27px;
     line-height: 23px;
     color: #000000;
     margin-right: 5px;
