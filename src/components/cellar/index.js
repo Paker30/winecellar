@@ -11,6 +11,9 @@ const DrinkColor = Styled.span`
     font-style: normal;
     font-weight: normal;
     font-size: 27px;
+    ${Media.lessThan('medium')`
+        font-size: 25px;
+    `}
     line-height: 23px;
     color: #000000;
     margin-right: 5px;
