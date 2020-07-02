@@ -6,6 +6,7 @@ import { Trans } from 'react-i18next';
 import Styled from 'styled-components';
 import Media from 'styled-media-query';
 import Moment from 'moment';
+import Close from '../../../assets/close.svg';
 
 const { YearPicker } = DatePicker;
 const { Option } = Select;
@@ -33,6 +34,13 @@ const NewBottle = Styled.div`
     `}
 `;
 
+const CloseWrapper = Styled.div`
+    margin-left: auto;
+    button {
+        border: none;
+    }
+`;
+
 const cleanObject = (obj) => JSON.parse(JSON.stringify(obj));
 const B = (f) => (g) => (x) => f(g(x));
 const capitalized = (word) => word.charAt(0).toUpperCase() + word.slice(1);
@@ -54,6 +62,7 @@ function OtherBottle({ add, history, find }) {
 
     return (
         <NewBottle>
+            <CloseWrapper><Button onClick={() => history.push('/')} icon={<Close />} /></CloseWrapper>
             <Form
                 name="newBottle"
                 layout="vertical"

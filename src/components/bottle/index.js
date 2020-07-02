@@ -6,6 +6,7 @@ import { Rate, Button } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Trans, withTranslation } from 'react-i18next';
 import selectCup from '../../miscellanea';
+import Close from '../../../assets/close.svg';
 
 // eslint-disable-next-line no-confusing-arrow
 const displayBorder = (border) => border ? '' : 'none';
@@ -73,6 +74,15 @@ const Buttons = Styled.div`
     display: flex;
 `;
 
+const CloseWrapper = Styled.div`
+    margin-left: auto;
+    position: relative;
+    button {
+        border: none;
+        left: 50px;
+    }
+`;
+
 const Section = ({ title, description, value, border = true }) => (
     <DetailContainer style={{ border: displayBorder(border) }}>
         <TitleArea>
@@ -108,6 +118,7 @@ function Bottle({ find, deleteBootle, history, t }) {
 
     return (
         <Detail>
+            <CloseWrapper><Button onClick={() => history.push('/')} icon={<Close />} /></CloseWrapper>
             <MainSection title={name} description={appellationOfOrigin} value={selectCup({ color, type })} border={false} />
             <Section title={<Trans i18nKey={`bottle.color.${color}`} />} description={<Trans i18nKey={`bottle.type.${type}`} />} value={`${price} ${t('currency')}`} />
             <Section title={region} description={year} value={<Rate allowHalf disabled="true" value={rate} />} />
