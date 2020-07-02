@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 4.3.0 (2020-07-02)
+
+
+### Features
+
+* **forms:** close forms with x button ([6a7d16f](https://github.com/Paker30/winecellar/commit/6a7d16f059f265b3aa1763a460107cc4d06fdedd))
+
 ### 4.2.4 (2020-07-02)
 
 
