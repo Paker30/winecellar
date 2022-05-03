@@ -66,7 +66,6 @@ const ListArea = Styled.div`
     width: 100%;
 `;
 
-
 const Area = Styled.div`
     display: grid;
     height: inherit;
@@ -157,7 +156,7 @@ export default class App extends Component {
             .then(({ rev }) => {
                 this.setState({ bottles: [...bottles, { id: bottleId, _id: id, ...bottle, _rev: rev }] });
             })
-            .catch((error) => console.log('Something went wrong adding the bottle', error));
+            .catch((error) => console.error('Something went wrong adding the bottle', error));
     }
 
     updateBottle(bottle) {
@@ -166,7 +165,7 @@ export default class App extends Component {
             .then(({ rev }) => {
                 this.setState({ bottles: [...bottles.filter(({ id }) => id !== bottle.id), { ...bottle, _rev: rev }] });
             })
-            .catch((error) => console.log('Something went wrong updating the bottle', error));
+            .catch((error) => console.error('Something went wrong updating the bottle', error));
     }
 
     deleteBootle(bottle) {
@@ -174,14 +173,14 @@ export default class App extends Component {
         const bottleRemove = bottles.find(({ id }) => id === bottle.id);
         db.remove(bottleRemove)
             .then(() => this.setState({ bottles: [...bottles.filter(({ id }) => id !== bottle.id)] }))
-            .catch((error) => console.log('Something went wrong removing the bottle', error));
+            .catch((error) => console.error('Something went wrong removing the bottle', error));
     }
 
     saveUser(user) {
         const { db } = this.state;
         db.put({ _id: Uniqid('user-'), id: Uniqid(), name: user })
             .then(() => this.setState({ user: { name: user } }))
-            .catch((error) => console.log('Something went wrong saving your name', error));
+            .catch((error) => console.error('Something went wrong saving your name', error));
     }
 
     search(value) {
