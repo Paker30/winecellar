@@ -41,4 +41,3 @@ jobs:
         FROM_PATH: "./public"
         DEST_PATH: "s3://cellar.com"
         OPTIONS: "--acl public-read"
-
