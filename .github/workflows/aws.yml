@@ -20,7 +20,7 @@ jobs:
     - name: Set up Node version
       uses: actions/setup-node@v1
       with:
-        node-version: '18.x'
+        node-version: '16.x'
     - run: npm install
     - run: git config user.email "${{ secrets.EMAIL }}" && git config user.name "${{ github.actor }}"
     - run: npm run release
