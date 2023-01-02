@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.4.0](https://github.com/Paker30/winecellar/compare/v4.3.18...v4.4.0) (2023-01-02)
+
+
+### Features
+
+* add react-is dependency ([5a90bcf](https://github.com/Paker30/winecellar/commit/5a90bcfedc76b1aa5a8e9cee0f37ccaf8cace44a))
+
 ### [4.3.18](https://github.com/Paker30/winecellar/compare/v4.3.17...v4.3.18) (2023-01-02)
 
 ### [4.3.17](https://github.com/Paker30/winecellar/compare/v4.3.16...v4.3.17) (2023-01-02)
