@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { withRouter, useLocation } from 'react-router-dom';
 import { Form, Input, Button, Select, Rate, DatePicker, InputNumber } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
@@ -47,6 +47,7 @@ const capitalized = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 const toCapitalized = (str) => str.split(' ').map(capitalized).join(' ');
 
 function OtherBottle({ add, history, find }) {
+    const nameRef = useRef(null);
     const query = new URLSearchParams(useLocation().search);
     const bottle = find(query.get('id')) || {};
 
@@ -59,6 +60,10 @@ function OtherBottle({ add, history, find }) {
         B(add)(cleanObject)({ ...form, year: form.year.year(), _id: bottle._id, _rev: bottle._rev, id: bottle.id });
         history.push('/');
     };
+
+    useEffect(() => {
+        nameRef.current.focus();
+    }, []);
 
     return (
         <NewBottle>
@@ -92,7 +97,7 @@ function OtherBottle({ add, history, find }) {
                         },
                     ]}
                 >
-                    <Input />
+                    <Input ref={nameRef} />
                 </Form.Item>
                 <Form.Item
                     label={<Trans i18nKey="forms.new.color" />}
