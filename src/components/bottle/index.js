@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation, withRouter } from 'react-router-dom';
 import Styled from 'styled-components';
 import Media from 'styled-media-query';
@@ -112,13 +112,19 @@ const MainSection = ({ title, description, value, border = true }) => (
 );
 
 function Bottle({ find, deleteBootle, history, t }) {
+    const divRef = useRef(null);
     const query = new URLSearchParams(useLocation().search);
     const bottle = find(query.get('id'));
-    const { name, color, type, year, appellationOfOrigin, price, rate, region, notes } = bottle;
+    const { name, color, type, year, appellationOfOrigin, price, rate, region, notes, id } = bottle;
+
+    useEffect(() => {
+        divRef.current.scrollIntoView();
+    }, [id]);
 
     return (
         <Detail>
             <CloseWrapper><Button onClick={() => history.push('/')} icon={<Close />} /></CloseWrapper>
+            <div ref={divRef}>hola</div>
             <MainSection title={name} description={appellationOfOrigin} value={selectCup({ color, type })} border={false} />
             <Section title={<Trans i18nKey={`bottle.color.${color}`} />} description={<Trans i18nKey={`bottle.type.${type}`} />} value={`${price} ${t('currency')}`} />
             <Section title={region} description={year} value={<Rate allowHalf disabled="true" value={rate} />} />
