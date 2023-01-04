@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.6.0](https://github.com/Paker30/winecellar/compare/v4.5.0...v4.6.0) (2023-01-04)
+
+
+### Features
+
+* **bottle:** scroll detail into view ([3cc9716](https://github.com/Paker30/winecellar/commit/3cc9716948bd1fcf3e3e94df1a1c3880667d3135)), closes [#59](https://github.com/Paker30/winecellar/issues/59)
+
 ## [4.5.0](https://github.com/Paker30/winecellar/compare/v4.3.18...v4.5.0) (2023-01-03)
 
 
