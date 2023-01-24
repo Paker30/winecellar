@@ -122,9 +122,8 @@ function Bottle({ find, deleteBootle, history, t }) {
     }, [id]);
 
     return (
-        <Detail>
+        <Detail ref={divRef}>
             <CloseWrapper><Button onClick={() => history.push('/')} icon={<Close />} /></CloseWrapper>
-            <div ref={divRef}>hola</div>
             <MainSection title={name} description={appellationOfOrigin} value={selectCup({ color, type })} border={false} />
             <Section title={<Trans i18nKey={`bottle.color.${color}`} />} description={<Trans i18nKey={`bottle.type.${type}`} />} value={`${price} ${t('currency')}`} />
             <Section title={region} description={year} value={<Rate allowHalf disabled="true" value={rate} />} />
