@@ -150,9 +150,9 @@ const App = () => {
             .catch((error) => console.error('Something went wrong removing the bottle', error));
     };
 
-    const saveUser = () => {
-        db.put({ _id: Uniqid('user-'), id: Uniqid(), name: user })
-            .then(() => setUser({ name: user }))
+    const saveUser = (name) => {
+        db.put({ _id: Uniqid('user-'), id: Uniqid(), name })
+            .then(() => setUser({ name }))
             .catch((error) => console.error('Something went wrong saving your name', error));
     };
 
