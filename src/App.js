@@ -11,7 +11,7 @@ import ToolBar from './components/toolBar';
 import Loading from './components/loading';
 import Login from './components/login';
 import Search from './components/search';
-import { version } from '../package.json';
+import pkg from '../package.json';
 import AddCup from '../assets/add_cup.svg';
 
 const Bottle = React.lazy(() => import('./components/bottle'));
@@ -150,9 +150,9 @@ const App = () => {
             .catch((error) => console.error('Something went wrong removing the bottle', error));
     };
 
-    const saveUser = () => {
-        db.put({ _id: Uniqid('user-'), id: Uniqid(), name: user })
-            .then(() => setUser({ name: user }))
+    const saveUser = (name) => {
+        db.put({ _id: Uniqid('user-'), id: Uniqid(), name })
+            .then(() => setUser({ name }))
             .catch((error) => console.error('Something went wrong saving your name', error));
     };
 
@@ -243,7 +243,7 @@ const App = () => {
                                 Mel
                             </a>
                         </span>
-                        <span style={{ marginLeft: 'auto' }}>{`v ${version}`}</span>
+                        <span style={{ marginLeft: 'auto' }}>{`v ${pkg.version}`}</span>
                     </Footer>
                 </FooterArea>
             </Router>
