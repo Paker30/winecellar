@@ -4,7 +4,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
@@ -92,9 +91,9 @@ module.exports = {
             }],
         })
     ],
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-cheap-module-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
+        static: path.resolve(__dirname, 'public'),
         hot: true
     },
     optimization: {
