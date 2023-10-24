@@ -20,13 +20,13 @@ const Header = Styled.div`
 
 export default class Title extends Component {
     render() {
-        const { userName } = this.props;
+        const { userName: { name } } = this.props;
 
         return (
             <Header>
                 <div className="logo" />
                 <Trans i18nKey="title" />
-                {userName.name}
+                {name}
             </Header>
         );
     }
