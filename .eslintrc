@@ -16,5 +16,8 @@
         "no-sequences": "off",
         "no-confusing-arrow": "off",
         "no-underscore-dangle": "off"
+    },
+    "globals": {
+        "document": true
     }
 }

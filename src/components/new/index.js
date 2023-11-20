@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { withRouter, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Form, Input, Button, Select, Rate, DatePicker, InputNumber } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { Trans } from 'react-i18next';
@@ -48,6 +48,7 @@ const toCapitalized = (str) => str.split(' ').map(capitalized).join(' ');
 
 function OtherBottle({ add, history, find }) {
     const nameRef = useRef(null);
+    const navigate = useNavigate();
     const query = new URLSearchParams(useLocation().search);
     const bottle = find(query.get('id')) || {};
 
@@ -66,7 +67,7 @@ function OtherBottle({ add, history, find }) {
     }, []);
 
     return (
-        <NewBottle>
+        <NewBottle navigate={navigate}>
             <CloseWrapper><Button onClick={() => history.push('/')} icon={<Close />} /></CloseWrapper>
             <Form
                 name="newBottle"
@@ -208,4 +209,4 @@ function OtherBottle({ add, history, find }) {
     );
 }
 
-export default withRouter(OtherBottle);
+export default OtherBottle;
