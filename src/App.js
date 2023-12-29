@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import Uniqid from 'uniqid';
 import PouchDB from 'pouchdb-browser';
@@ -106,9 +106,9 @@ function PrivateRoute({ userLogged, children, ...rest }) {
             // eslint-disable-next-line arrow-body-style
             render={() => {
                 return userLogged
-                    ? <Outlet />
+                    ? (children)
                     : (
-                        <Navigate
+                        <Redirect
                             to={{
                                 pathname: '/login'
                             }}
@@ -202,46 +202,32 @@ const App = () => {
                 </HeaderArea>
                 <MainArea>
                     <ListArea>
-                        <Routes>
-                            <Route
-                                path="/"
-                                element={(
-                                    <Suspense fallback={<div><Trans i18nKey="loading" /></div>}>
-                                        {mainContent}
-                                    </Suspense>
-                                )}
-                            />
-                        </Routes>
+                        <Switch>
+                            <Route path="/">
+                                <Suspense fallback={<div><Trans i18nKey="loading" /></div>}>
+                                    {mainContent}
+                                </Suspense>
+                            </Route>
+                        </Switch>
                     </ListArea>
                     <DetailArea>
-                        <Routes>
-                            <Route
-                                path="/bottle"
-                                element={(
-                                    <Suspense fallback={<Loading />}>
-                                        <Bottle find={pickBottle(bottles)} deleteBootle={deleteBootle} />
-                                    </Suspense>
-                                )}
-                            />
-                            <Route
-                                path="/add"
-                                element={(
-                                    <PrivateRoute userLogged={user.name}>
-                                        <Suspense fallback={<Loading />}>
-                                            <OtherBottle add={addBottle} find={pickBottle(bottles)} />
-                                        </Suspense>
-                                    </PrivateRoute>
-                                )}
-                            />
-                            <Route
-                                path="/edit"
-                                element={(
-                                    <Suspense fallback={<Loading />}>
-                                        <OtherBottle add={updateBottle} find={pickBottle(bottles)} />
-                                    </Suspense>
-                                )}
-                            />
-                        </Routes>
+                        <Switch>
+                            <Route path="/bottle">
+                                <Suspense fallback={<Loading />}>
+                                    <Bottle find={pickBottle(bottles)} deleteBootle={deleteBootle} />
+                                </Suspense>
+                            </Route>
+                            <PrivateRoute userLogged={user.name} path="/add">
+                                <Suspense fallback={<Loading />}>
+                                    <OtherBottle add={addBottle} find={pickBottle(bottles)} />
+                                </Suspense>
+                            </PrivateRoute>
+                            <Route path="/edit">
+                                <Suspense fallback={<Loading />}>
+                                    <OtherBottle add={updateBottle} find={pickBottle(bottles)} />
+                                </Suspense>
+                            </Route>
+                        </Switch>
                     </DetailArea>
                 </MainArea>
                 <FooterArea>
