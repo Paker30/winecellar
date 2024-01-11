@@ -99,21 +99,7 @@ const addLink = (
     </Link>
 );
 
-function PrivateRoute({ userLogged, children, ...rest }) {
-    return (
-        // <Routes>
-        <Route
-            {...rest}
-            // eslint-disable-next-line arrow-body-style
-            render={() => {
-                return userLogged
-                    ? (children)
-                    : redirect('/login');
-            }}
-        />
-        // </Routes>
-    );
-}
+const PrivateRoute = ({ userLogged, children }) => userLogged ? (children) : redirect('/login');
 
 const App = () => {
     const [db] = useState(new PouchDB('cellar_db'));
