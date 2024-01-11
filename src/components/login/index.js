@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 import Styled from 'styled-components';
 import { Trans } from 'react-i18next';
@@ -35,8 +35,10 @@ function Login({ history, saveUser }) {
         history.push('/');
     };
 
+    const navigate = useNavigate();
+
     return (
-        <LoginForm>
+        <LoginForm navigate={navigate}>
             <Form
                 name="loginForm"
                 layout="vertical"
@@ -64,4 +66,4 @@ function Login({ history, saveUser }) {
     );
 }
 
-export default withRouter(Login);
+export default Login;

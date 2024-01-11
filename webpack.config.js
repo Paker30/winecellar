@@ -14,11 +14,6 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 test: /\.(js|jsx)$/,
-                options: {
-                    plugins: [
-                        ['import', { libraryName: 'antd', style: 'css' }]
-                    ]
-                },
             },
             {
                 loader: 'eslint-loader',

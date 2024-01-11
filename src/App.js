@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import Uniqid from 'uniqid';
 import PouchDB from 'pouchdb-browser';
@@ -99,25 +99,7 @@ const addLink = (
     </Link>
 );
 
-function PrivateRoute({ userLogged, children, ...rest }) {
-    return (
-        <Route
-            {...rest}
-            // eslint-disable-next-line arrow-body-style
-            render={() => {
-                return userLogged
-                    ? (children)
-                    : (
-                        <Redirect
-                            to={{
-                                pathname: '/login'
-                            }}
-                        />
-                    );
-            }}
-        />
-    );
-}
+const PrivateRoute = ({ userLogged, children }) => userLogged ? (children) : redirect('/login');
 
 const App = () => {
     const [db] = useState(new PouchDB('cellar_db'));
@@ -191,7 +173,7 @@ const App = () => {
 
     return (
         <Area>
-            <Router>
+            <BrowserRouter>
                 <HeaderArea>
                     <Title userName={user} />
                     <ToolBar
@@ -202,32 +184,46 @@ const App = () => {
                 </HeaderArea>
                 <MainArea>
                     <ListArea>
-                        <Switch>
-                            <Route path="/">
-                                <Suspense fallback={<div><Trans i18nKey="loading" /></div>}>
-                                    {mainContent}
-                                </Suspense>
-                            </Route>
-                        </Switch>
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={(
+                                    <Suspense fallback={<div><Trans i18nKey="loading" /></div>}>
+                                        {mainContent}
+                                    </Suspense>
+                                )}
+                            />
+                        </Routes>
                     </ListArea>
                     <DetailArea>
-                        <Switch>
-                            <Route path="/bottle">
-                                <Suspense fallback={<Loading />}>
-                                    <Bottle find={pickBottle(bottles)} deleteBootle={deleteBootle} />
-                                </Suspense>
-                            </Route>
-                            <PrivateRoute userLogged={user.name} path="/add">
-                                <Suspense fallback={<Loading />}>
-                                    <OtherBottle add={addBottle} find={pickBottle(bottles)} />
-                                </Suspense>
-                            </PrivateRoute>
-                            <Route path="/edit">
-                                <Suspense fallback={<Loading />}>
-                                    <OtherBottle add={updateBottle} find={pickBottle(bottles)} />
-                                </Suspense>
-                            </Route>
-                        </Switch>
+                        <Routes>
+                            <Route
+                                path="/bottle"
+                                element={(
+                                    <Suspense fallback={<Loading />}>
+                                        <Bottle find={pickBottle(bottles)} deleteBootle={deleteBootle} />
+                                    </Suspense>
+                                )}
+                            />
+                            <Route
+                                path="/add"
+                                element={(
+                                    <PrivateRoute userLogged={user.name} path="/add">
+                                        <Suspense fallback={<Loading />}>
+                                            <OtherBottle add={addBottle} find={pickBottle(bottles)} />
+                                        </Suspense>
+                                    </PrivateRoute>
+                                )}
+                            />
+                            <Route
+                                path="/edit"
+                                element={(
+                                    <Suspense fallback={<Loading />}>
+                                        <OtherBottle add={updateBottle} find={pickBottle(bottles)} />
+                                    </Suspense>
+                                )}
+                            />
+                        </Routes>
                     </DetailArea>
                 </MainArea>
                 <FooterArea>
@@ -246,7 +242,7 @@ const App = () => {
                         <span style={{ marginLeft: 'auto' }}>{`v ${pkg.version}`}</span>
                     </Footer>
                 </FooterArea>
-            </Router>
+            </BrowserRouter>
         </Area>
     );
 };
