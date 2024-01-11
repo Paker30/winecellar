@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/Paker30/winecellar/compare/v4.6.8...v5.0.0) (2024-01-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **react-router:** migrate to react-router v6
+
+### Features
+
+* **react-router:** first step to version 6 ([03ded6b](https://github.com/Paker30/winecellar/commit/03ded6bec3cc33a2d673e0d336d6f8256a9a1ca8))
+* **react-router:** fix PrivateRouter ([63a795e](https://github.com/Paker30/winecellar/commit/63a795ede48d52e7489013e0734894ce4310f6a3))
+* **react-router:** upgrade history into V6 ([2b5c820](https://github.com/Paker30/winecellar/commit/2b5c8203b9387b43bb878934e5ab22510a464e6c))
+* **react, react-router:** update both react and react-router versions ([edfd6dd](https://github.com/Paker30/winecellar/commit/edfd6dd498a86b08c65d57936d4d0bde0da75cd4))
+
+
+### Bug Fixes
+
+* **css:** small fine tune ([06e19b7](https://github.com/Paker30/winecellar/commit/06e19b76aae65c88dea6089a5a94d5cba07ba33f))
+
 ### [4.6.8](https://github.com/Paker30/winecellar/compare/v4.6.7...v4.6.8) (2023-10-24)
 
 
