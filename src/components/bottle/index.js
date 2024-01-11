@@ -111,7 +111,7 @@ const MainSection = ({ title, description, value, border = true }) => (
     </DetailContainer>
 );
 
-function Bottle({ find, deleteBootle, history, t }) {
+function Bottle({ find, deleteBootle, t }) {
     const divRef = useRef(null);
     const query = new URLSearchParams(useLocation().search);
     const bottle = find(query.get('id'));
@@ -125,7 +125,7 @@ function Bottle({ find, deleteBootle, history, t }) {
 
     return (
         <Detail ref={divRef} navigate={navigate}>
-            <CloseWrapper><Button onClick={() => history.push('/')} icon={<Close />} /></CloseWrapper>
+            <CloseWrapper><Button onClick={() => navigate('/')} icon={<Close />} /></CloseWrapper>
             <MainSection title={name} description={appellationOfOrigin} value={selectCup({ color, type })} border={false} />
             <Section title={<Trans i18nKey={`bottle.color.${color}`} />} description={<Trans i18nKey={`bottle.type.${type}`} />} value={`${price} ${t('currency')}`} />
             <Section title={region} description={year} value={<Rate allowHalf disabled="true" value={rate} />} />
@@ -138,7 +138,7 @@ function Bottle({ find, deleteBootle, history, t }) {
             <Buttons>
                 <Button
                     onClick={() => {
-                        history.push(`/edit?id=${bottle.id}`);
+                        navigate(`/edit?id=${bottle.id}`);
                     }}
                     shape="round"
                     style={{
@@ -161,7 +161,7 @@ function Bottle({ find, deleteBootle, history, t }) {
                     }}
                     onClick={() => {
                         deleteBootle(bottle);
-                        history.push('/');
+                        navigate('/');
                     }}
                 />
             </Buttons>

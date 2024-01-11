@@ -46,7 +46,7 @@ const B = (f) => (g) => (x) => f(g(x));
 const capitalized = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 const toCapitalized = (str) => str.split(' ').map(capitalized).join(' ');
 
-function OtherBottle({ add, history, find }) {
+function OtherBottle({ add, find }) {
     const nameRef = useRef(null);
     const navigate = useNavigate();
     const query = new URLSearchParams(useLocation().search);
@@ -59,7 +59,7 @@ function OtherBottle({ add, history, find }) {
     const onFinish = (form) => {
         // eslint-disable-next-line no-underscore-dangle
         B(add)(cleanObject)({ ...form, year: form.year.year(), _id: bottle._id, _rev: bottle._rev, id: bottle.id });
-        history.push('/');
+        navigate('/');
     };
 
     useEffect(() => {
@@ -68,7 +68,7 @@ function OtherBottle({ add, history, find }) {
 
     return (
         <NewBottle navigate={navigate}>
-            <CloseWrapper><Button onClick={() => history.push('/')} icon={<Close />} /></CloseWrapper>
+            <CloseWrapper><Button onClick={() => navigate('/')} icon={<Close />} /></CloseWrapper>
             <Form
                 name="newBottle"
                 layout="vertical"
