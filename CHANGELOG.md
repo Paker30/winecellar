@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.1](https://github.com/Paker30/winecellar/compare/v5.0.0...v5.0.1) (2024-01-11)
+
+
+### Bug Fixes
+
+* import react-dom ([555deb3](https://github.com/Paker30/winecellar/commit/555deb34cb48e21038d1ddd8a9e7a84b29590859))
+
 ## [5.0.0](https://github.com/Paker30/winecellar/compare/v4.6.8...v5.0.0) (2024-01-11)
 
 
