@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.2](https://github.com/Paker30/winecellar/compare/v5.1.1...v5.1.2) (2024-01-12)
+
+
+### Bug Fixes
+
+* import createRoot in the new way ([e0de667](https://github.com/Paker30/winecellar/commit/e0de667b1aecd1b3a11c402fdedba2d28a7d4b96))
+
 ### [5.1.1](https://github.com/Paker30/winecellar/compare/v5.1.0...v5.1.1) (2024-01-12)
 
 ## [5.1.0](https://github.com/Paker30/winecellar/compare/v5.0.1...v5.1.0) (2024-01-12)
