@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import i18n from './i18n';
 
@@ -14,7 +14,7 @@ i18n
         initImmediate: false
     })
     .then(() => {
-        ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+        createRoot(document.getElementById('app')).render(<App />);
 
         module.hot.accept();
     });
