@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.7](https://github.com/Paker30/winecellar/compare/v5.1.6...v5.1.7) (2024-04-22)
+
 ### [5.1.6](https://github.com/Paker30/winecellar/compare/v5.1.5...v5.1.6) (2024-04-09)
 
 ### [5.1.5](https://github.com/Paker30/winecellar/compare/v5.1.4...v5.1.5) (2024-04-03)
