@@ -188,7 +188,7 @@ const App = () => {
                             <Route
                                 path="/"
                                 element={(
-                                    <Suspense fallback={<div><Trans i18nKey="loading" /></div>}>
+                                    <Suspense fallback={<Loading />}>
                                         {mainContent}
                                     </Suspense>
                                 )}
