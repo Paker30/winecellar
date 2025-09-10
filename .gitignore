@@ -104,8 +104,7 @@ dist
 .tern-port
 
 # bundle file
-public/bundle.js
-public/*.bundle.js
+public/
 
 # ide configuration
 .vscode
