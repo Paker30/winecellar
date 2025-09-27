@@ -186,7 +186,7 @@ const App = () => {
                     <ListArea>
                         <Routes>
                             <Route
-                                path="/"
+                                path="*"
                                 element={(
                                     <Suspense fallback={<div><Trans i18nKey="loading" /></div>}>
                                         {mainContent}
