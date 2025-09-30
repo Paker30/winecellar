@@ -79,7 +79,7 @@
     "pouchdb-browser": "^7.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "^14.0.0",
+    "react-i18next": "^16.0.0",
     "react-is": "^19.1.1",
     "react-router-dom": "^6.23.1",
     "styled-components": "^6.1.1",
