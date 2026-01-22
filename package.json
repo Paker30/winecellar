@@ -82,7 +82,7 @@
     "react-i18next": "^14.0.0",
     "react-is": "^19.1.1",
     "react-router-dom": "^6.23.1",
-    "styled-components": "^6.1.1",
+    "styled-components": "^6.1.19",
     "styled-media-query": "^2.1.2",
     "uniqid": "^5.2.0"
   },
