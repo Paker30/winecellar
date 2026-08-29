@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm"
+  - package-ecosystem: "pnpm"
     # Look for `package.json` and `lock` files in the `root` directory
     directory: "/" # Location of package manifests
     schedule:
